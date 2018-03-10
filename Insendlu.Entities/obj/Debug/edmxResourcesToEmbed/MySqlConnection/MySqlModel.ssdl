@@ -1,0 +1,719 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="insedluModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="accommodation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="location" Type="varchar" MaxLength="100" />
+    <Property Name="start_date" Type="datetime" Precision="0" />
+    <Property Name="end_start" Type="datetime" Precision="0" />
+    <Property Name="cost" Type="int" />
+    <Property Name="project_id" Type="int" />
+    <Property Name="worklog_id" Type="int" />
+  </EntityType>
+  <EntityType Name="accounting">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="data" Type="varchar" MaxLength="500" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="activity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="asset" Type="varchar" MaxLength="100" />
+    <Property Name="assert_id" Type="int" />
+    <Property Name="worklog_id" Type="int" />
+    <Property Name="cost" Type="varchar" MaxLength="10" />
+    <Property Name="location_name" Type="varchar" MaxLength="50" />
+    <Property Name="material_name" Type="varchar" MaxLength="50" />
+    <Property Name="material_quantity" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="asset">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="beestatus">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="proj_id" Type="int" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="[content]" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="businessplan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="content" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="contact_number" Type="varchar" MaxLength="15" />
+    <Property Name="status" Type="int" />
+    <Property Name="email" Type="varchar" MaxLength="50" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="proj_id" Type="int" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="comment" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="mission_statement" Type="varchar" MaxLength="500" />
+    <Property Name="service_id" Type="int" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="companyservices">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="consultancy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="data" Type="varchar" MaxLength="50" />
+    <Property Name="proj_id" Type="int" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="department">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="developmentplans">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="content" Type="varchar" MaxLength="500" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="user_id" Type="int" />
+  </EntityType>
+  <EntityType Name="documenttype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="doc_type" Type="int" />
+  </EntityType>
+  <EntityType Name="durationtype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="employees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="cost" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="employee_type" Type="varchar" MaxLength="50" />
+    <Property Name="no_of_employees" Type="varchar" MaxLength="10" />
+    <Property Name="end_start" Type="date" />
+    <Property Name="project_id" Type="int" />
+    <Property Name="worklog_id" Type="int" />
+  </EntityType>
+  <EntityType Name="executivesummary">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="content" Type="varchar" MaxLength="500" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="employee_type" Type="varchar" MaxLength="50" />
+    <Property Name="no_of_employees" Type="varchar" MaxLength="10" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="project_id" Type="int" />
+  </EntityType>
+  <EntityType Name="fieldworkstatistics">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="pulse_count" Type="int" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="project_id" Type="int" />
+    <Property Name="worklog_id" Type="int" />
+  </EntityType>
+  <EntityType Name="fieldworktype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="logging">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="duration" Type="int" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="department" Type="varchar" MaxLength="100" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="project_id" Type="int" />
+    <Property Name="duration_type_id" Type="int" />
+    <Property Name="logger" Type="int" />
+  </EntityType>
+  <EntityType Name="message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" />
+    <Property Name="firstName" Type="varchar" MaxLength="50" />
+    <Property Name="lastName" Type="varchar" MaxLength="50" />
+    <Property Name="level" Type="int" />
+  </EntityType>
+  <EntityType Name="mystory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="story" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="int" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="body" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="project_id" Type="int" />
+  </EntityType>
+  <EntityType Name="printmaterial">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="worklog_id" Type="int" />
+    <Property Name="start_date" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="quantity" Type="varchar" MaxLength="100" />
+    <Property Name="end_start" Type="datetime" Precision="0" />
+    <Property Name="project_id" Type="int" />
+    <Property Name="cost" Type="int" />
+  </EntityType>
+  <EntityType Name="project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="duration" Type="int" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="team" Type="varchar" MaxLength="50" />
+    <Property Name="department_name" Type="varchar" MaxLength="100" />
+    <Property Name="conclusion" Type="varchar" MaxLength="2000" />
+    <Property Name="description" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_cat_id" Type="int" />
+    <Property Name="status" Type="int" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="upload_id" Type="int" />
+    <Property Name="exec_summary_id" Type="int" />
+    <Property Name="company_id" Type="int" />
+    <Property Name="policy_id" Type="int" />
+    <Property Name="methodology_id" Type="int" />
+    <Property Name="proj_reference" Type="int" />
+    <Property Name="cost_plan_id" Type="int" />
+    <Property Name="risk_id" Type="int" />
+    <Property Name="coverpage_id" Type="int" />
+    <Property Name="jvCompany_id" Type="int" />
+    <Property Name="scope_id" Type="int" />
+    <Property Name="projectTeam_id" Type="int" />
+    <Property Name="implement_id" Type="int" />
+    <Property Name="whyChoose_id" Type="int" />
+    <Property Name="bee_id" Type="int" />
+    <Property Name="duration_type_id" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="project_type" Type="varchar" MaxLength="150" />
+    <Property Name="client_id" Type="int" />
+  </EntityType>
+  <EntityType Name="projectcategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="int" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="projectcostplan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="details" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="projectcoverpage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="s" Type="char" MaxLength="10" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="content" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="projectdocuments">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="location" Type="varchar" MaxLength="200" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="doc_type" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+    <Property Name="file" Type="varbinary" MaxLength="5000" />
+  </EntityType>
+  <EntityType Name="projectimplementationtime">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="content" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="projectjvcompany">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="content" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="projectmethodology">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="content" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="projectparameter">
+    <Key>
+      <PropertyRef Name="project_id" />
+    </Key>
+    <Property Name="project_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="variable_id" Type="int" />
+    <Property Name="create_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="created_by" Type="int" />
+  </EntityType>
+  <EntityType Name="projectpolicy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="policy_number" Type="varchar" MaxLength="20" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="content" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="projectprojections">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="status" Type="int" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="employees" Type="varchar" MaxLength="50" />
+    <Property Name="vehicle" Type="varchar" MaxLength="50" />
+    <Property Name="accomodation" Type="varchar" MaxLength="50" />
+    <Property Name="print_material" Type="varchar" MaxLength="50" />
+    <Property Name="refreshments" Type="varchar" MaxLength="50" />
+    <Property Name="telephone" Type="varchar" MaxLength="50" />
+    <Property Name="wifi_data" Type="varchar" MaxLength="50" />
+    <Property Name="proj_id" Type="int" />
+    <Property Name="user_id" Type="int" />
+  </EntityType>
+  <EntityType Name="projectproposal">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="250" />
+    <Property Name="file" Type="varbinary" MaxLength="5000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+    <Property Name="duration_type" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="projectreferences">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="content" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="projectscopeofwork">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="content" Type="varchar" MaxLength="100" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="projectstatus">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="projectteam">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="content" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="proposaltype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="proposaluser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="users" Type="varchar" MaxLength="50" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="refreshment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="worklog_id" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="cost" Type="int" />
+    <Property Name="end_start" Type="date" />
+    <Property Name="project_id" Type="int" />
+  </EntityType>
+  <EntityType Name="research">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="data" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="riskanalysis">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="risk_analysis" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="smallproject">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="duration" Type="varchar" MaxLength="50" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="department" Type="varchar" MaxLength="100" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="status" Type="int" />
+    <Property Name="administrator" Type="int" />
+  </EntityType>
+  <EntityType Name="task">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="body" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="user_id" Type="int" />
+  </EntityType>
+  <EntityType Name="telephone">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="worklog_id" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="cost" Type="int" />
+    <Property Name="end_start" Type="date" />
+    <Property Name="project_id" Type="int" />
+  </EntityType>
+  <EntityType Name="upload">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="file_location" Type="varchar" MaxLength="5000" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="2000" />
+    <Property Name="content_type" Type="varchar" MaxLength="2000" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="data" Type="varbinary" MaxLength="5000" />
+    <Property Name="duration_type_id" Type="int" />
+    <Property Name="user_id" Type="int" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="surname" Type="varchar" MaxLength="50" />
+    <Property Name="email" Type="varchar" MaxLength="100" />
+    <Property Name="password" Type="varchar" MaxLength="50" />
+    <Property Name="recovery_question" Type="int" />
+    <Property Name="recovery_answer" Type="varchar" MaxLength="2000" />
+    <Property Name="temporary_password" Type="varchar" MaxLength="50" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="department" Type="varchar" MaxLength="100" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="project_id" Type="int" />
+    <Property Name="duration_type_id" Type="int" />
+    <Property Name="user_type_id" Type="int" />
+    <Property Name="status" Type="int" />
+    <Property Name="contact_number" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="user_project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="start_date" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="userprofile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="task_id" Type="int" />
+    <Property Name="profile_pic" Type="varbinary" MaxLength="50000" />
+    <Property Name="job_title" Type="varchar" MaxLength="50" />
+    <Property Name="department_id" Type="int" />
+    <Property Name="contact_number" Type="varchar" MaxLength="15" />
+    <Property Name="position" Type="varchar" MaxLength="200" />
+    <Property Name="biography" Type="varchar" MaxLength="2000" />
+    <Property Name="cv" Type="varbinary" MaxLength="2000" />
+    <Property Name="past_experience" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="usertype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="int" />
+    <Property Name="status" Type="int" />
+  </EntityType>
+  <EntityType Name="variables">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="access_key" Type="char" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="vehicle">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="worklog_id" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="cost" Type="int" />
+    <Property Name="mileage" Type="varchar" MaxLength="100" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+    <Property Name="end_start" Type="date" />
+    <Property Name="project_id" Type="int" />
+  </EntityType>
+  <EntityType Name="whychoosebiz">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="content" Type="varchar" MaxLength="2000" />
+    <Property Name="created_at" Type="datetime" Precision="0" />
+    <Property Name="modified_at" Type="datetime" Precision="0" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <EntityType Name="wifi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="worklog_id" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="cost" Type="int" />
+    <Property Name="end_start" Type="date" />
+    <Property Name="project_id" Type="int" />
+  </EntityType>
+  <EntityType Name="worklog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date_logged" Type="date" />
+    <Property Name="user_id" Type="int" />
+    <Property Name="proj_id" Type="int" />
+  </EntityType>
+  <Function Name="get_assets_total" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="insedlu">
+    <Parameter Name="projId" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="insedluModelStoreContainer">
+    <EntitySet Name="accommodation" EntityType="Self.accommodation" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="accounting" EntityType="Self.accounting" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="activity" EntityType="Self.activity" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="asset" EntityType="Self.asset" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="beestatus" EntityType="Self.beestatus" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="businessplan" EntityType="Self.businessplan" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="client" EntityType="Self.client" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="comment" EntityType="Self.comment" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="company" EntityType="Self.company" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="companyservices" EntityType="Self.companyservices" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="consultancy" EntityType="Self.consultancy" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="department" EntityType="Self.department" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="developmentplans" EntityType="Self.developmentplans" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="documenttype" EntityType="Self.documenttype" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="durationtype" EntityType="Self.durationtype" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="employees" EntityType="Self.employees" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="executivesummary" EntityType="Self.executivesummary" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="fieldworkstatistics" EntityType="Self.fieldworkstatistics" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="fieldworktype" EntityType="Self.fieldworktype" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="logging" EntityType="Self.logging" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="message" EntityType="Self.message" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="mystory" EntityType="Self.mystory" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="notification" EntityType="Self.notification" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="printmaterial" EntityType="Self.printmaterial" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="project" EntityType="Self.project" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectcategory" EntityType="Self.projectcategory" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectcostplan" EntityType="Self.projectcostplan" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectcoverpage" EntityType="Self.projectcoverpage" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectdocuments" EntityType="Self.projectdocuments" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectimplementationtime" EntityType="Self.projectimplementationtime" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectjvcompany" EntityType="Self.projectjvcompany" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectmethodology" EntityType="Self.projectmethodology" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectparameter" EntityType="Self.projectparameter" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectpolicy" EntityType="Self.projectpolicy" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectprojections" EntityType="Self.projectprojections" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectproposal" EntityType="Self.projectproposal" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectreferences" EntityType="Self.projectreferences" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectscopeofwork" EntityType="Self.projectscopeofwork" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectstatus" EntityType="Self.projectstatus" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="projectteam" EntityType="Self.projectteam" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="proposaltype" EntityType="Self.proposaltype" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="proposaluser" EntityType="Self.proposaluser" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="refreshment" EntityType="Self.refreshment" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="research" EntityType="Self.research" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="riskanalysis" EntityType="Self.riskanalysis" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="smallproject" EntityType="Self.smallproject" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="task" EntityType="Self.task" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="telephone" EntityType="Self.telephone" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="upload" EntityType="Self.upload" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="user" EntityType="Self.user" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="user_project" EntityType="Self.user_project" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="userprofile" EntityType="Self.userprofile" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="usertype" EntityType="Self.usertype" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="variables" EntityType="Self.variables" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="vehicle" EntityType="Self.vehicle" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="whychoosebiz" EntityType="Self.whychoosebiz" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="wifi" EntityType="Self.wifi" Schema="insedlu" store:Type="Tables" />
+    <EntitySet Name="worklog" EntityType="Self.worklog" Schema="insedlu" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="29f5ea0c052744da9bd941cc35c5837d" Name="Diagram1" ZoomLevel="39">
+        <EntityTypeShape EntityType="InsendluModel.Company" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsendluModel.CompanyService" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsendluModel.ExecutiveSummary" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsendluModel.Notification" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsendluModel.Project" Width="1.5" PointX="5" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectCategory" Width="1.5" PointX="3.125" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectCostPlan" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectPolicy" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsendluModel.Upload" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsendluModel.User" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsendluModel.UserType" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectMethodology" Width="1.5" PointX="3.375" PointY="8.75" />
+        <EntityTypeShape EntityType="InsendluModel.Message" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="InsendluModel.User_Project" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="InsendluModel.Accounting" Width="1.5" PointX="9.375" PointY="6.75" />
+        <EntityTypeShape EntityType="InsendluModel.Consultancy" Width="1.5" PointX="9.375" PointY="9.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectDocument" Width="1.5" PointX="11.375" PointY="0.75" />
+        <EntityTypeShape EntityType="InsendluModel.Research" Width="1.5" PointX="3.375" PointY="11.75" />
+        <EntityTypeShape EntityType="InsendluModel.RiskAnalysi" Width="1.5" PointX="11.375" PointY="4.75" />
+        <EntityTypeShape EntityType="InsendluModel.Department" Width="1.5" PointX="11.75" PointY="7.75" />
+        <EntityTypeShape EntityType="InsendluModel.DocumentType" Width="1.5" PointX="11.75" PointY="10.75" />
+        <EntityTypeShape EntityType="InsendluModel.Task" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="InsendluModel.UserProfile" Width="1.5" PointX="5.75" PointY="12.75" />
+        <EntityTypeShape EntityType="InsendluModel.MyStory" Width="1.5" PointX="8.375" PointY="12.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectStatu" Width="1.5" PointX="13.375" PointY="0.75" />
+        <EntityTypeShape EntityType="InsendluModel.Activity" Width="1.5" PointX="13.375" PointY="3.75" />
+        <EntityTypeShape EntityType="InsendluModel.WorkLog" Width="1.5" PointX="10.375" PointY="13.75" />
+        <EntityTypeShape EntityType="InsendluModel.Asset" Width="1.5" PointX="12.375" PointY="13.75" />
+        <EntityTypeShape EntityType="InsendluModel.Employee" Width="1.5" PointX="14.75" PointY="10.75" />
+        <EntityTypeShape EntityType="InsendluModel.PrintMaterial" Width="1.5" PointX="14.75" PointY="13.75" />
+        <EntityTypeShape EntityType="InsendluModel.Refreshment" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InsendluModel.Telephone" Width="1.5" PointX="0.75" PointY="15.75" />
+        <EntityTypeShape EntityType="InsendluModel.Vehicle" Width="1.5" PointX="2.75" PointY="15.75" />
+        <EntityTypeShape EntityType="InsendluModel.Wifi" Width="1.5" PointX="15.75" PointY="3.75" />
+        <EntityTypeShape EntityType="InsendluModel.BEEStatu" Width="1.5" PointX="5.375" PointY="16.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectCoverPage" Width="1.5" PointX="7.375" PointY="16.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectImplementationTime" Width="1.5" PointX="9.375" PointY="16.75" />
+        <EntityTypeShape EntityType="InsendluModel.projectJVCompany" Width="1.5" PointX="11.375" PointY="16.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectReference" Width="1.5" PointX="13.375" PointY="16.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectScopeOfWork" Width="1.5" PointX="15.375" PointY="16.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectTeam" Width="1.5" PointX="17.375" PointY="6.75" />
+        <EntityTypeShape EntityType="InsendluModel.WhyChooseBiz" Width="1.5" PointX="17.375" PointY="9.75" />
+        <EntityTypeShape EntityType="InsendluModel.BusinessPlan" Width="1.5" PointX="17.375" PointY="12.75" />
+        <EntityTypeShape EntityType="InsendluModel.DevelopmentPlan" Width="1.5" PointX="17.375" PointY="15.75" />
+        <EntityTypeShape EntityType="InsendluModel.FieldWorkStatistic" Width="1.5" PointX="18.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InsendluModel.FieldWorkType" Width="1.5" PointX="0.75" PointY="18.75" />
+        <EntityTypeShape EntityType="InsendluModel.Comment" Width="1.5" PointX="18.375" PointY="3.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProposalUser" Width="1.5" PointX="17.375" PointY="18.75" />
+        <EntityTypeShape EntityType="InsendluModel.Logging" Width="1.5" PointX="3.375" PointY="19.75" />
+        <EntityTypeShape EntityType="InsendluModel.SmallProject" Width="1.5" PointX="5.375" PointY="19.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectProjection" Width="1.5" PointX="19.375" PointY="6.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectProposal" Width="1.5" PointX="7.375" PointY="19.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectParameter" Width="1.5" PointX="9.375" PointY="19.75" />
+        <EntityTypeShape EntityType="InsendluModel.Variable" Width="1.5" PointX="19.375" PointY="11.75" />
+        <EntityTypeShape EntityType="InsendluModel.DurationType" Width="1.5" PointX="11.375" PointY="19.75" />
+        <EntityTypeShape EntityType="InsendluModel.Client" Width="1.5" PointX="13.375" PointY="19.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProposalType" Width="1.5" PointX="19.375" PointY="14.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectEnvelop" Width="1.5" PointX="19.375" PointY="17.75" />
+        <EntityTypeShape EntityType="InsendluModel.Accommodation" Width="1.625" PointX="19.375" PointY="20.75" />
+        <EntityTypeShape EntityType="InsendluModel.Sector" Width="1.5" PointX="14.375" PointY="7.75" />
+        <EntityTypeShape EntityType="InsendluModel.CV" Width="1.5" PointX="21.75" PointY="0.75" />
+        <EntityTypeShape EntityType="InsendluModel.ReferenceContact" Width="1.5" PointX="0.75" PointY="21.75" />
+        <EntityTypeShape EntityType="InsendluModel.Reference" Width="1.5" PointX="21.75" PointY="4.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectCvsAndReference" Width="1.5" PointX="21.375" PointY="7.75" />
+        <EntityTypeShape EntityType="InsendluModel.ConfidentialityStatement" Width="1.5" PointX="21.375" PointY="10.75" />
+        <EntityTypeShape EntityType="InsendluModel.CoverpageStandard" Width="1.5" PointX="21.375" PointY="13.75" />
+        <EntityTypeShape EntityType="InsendluModel.WhyChooseStandard" Width="1.5" PointX="15.375" PointY="21.75" />
+        <EntityTypeShape EntityType="InsendluModel.ConclusionStandard" Width="1.5" PointX="21.375" PointY="16.75" />
+        <EntityTypeShape EntityType="InsendluModel.TaskDocument" Width="1.5" PointX="9.375" PointY="22.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

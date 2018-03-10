@@ -1,0 +1,721 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="insedluModelStoreContainer" CdmEntityContainer="insedluEntities">
+    <EntitySetMapping Name="accountings">
+      <EntityTypeMapping TypeName="insedluModel.accounting">
+        <MappingFragment StoreEntitySet="accounting">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="activities">
+      <EntityTypeMapping TypeName="insedluModel.activity">
+        <MappingFragment StoreEntitySet="activity">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="asset" ColumnName="asset" />
+          <ScalarProperty Name="assert_id" ColumnName="assert_id" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="location_name" ColumnName="location_name" />
+          <ScalarProperty Name="material_name" ColumnName="material_name" />
+          <ScalarProperty Name="material_quantity" ColumnName="material_quantity" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="assets">
+      <EntityTypeMapping TypeName="insedluModel.asset">
+        <MappingFragment StoreEntitySet="asset">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="beestatus">
+      <EntityTypeMapping TypeName="insedluModel.beestatu">
+        <MappingFragment StoreEntitySet="beestatus">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="C_content_" ColumnName="[content]" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="businessplans">
+      <EntityTypeMapping TypeName="insedluModel.businessplan">
+        <MappingFragment StoreEntitySet="businessplan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="content" ColumnName="content" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comments">
+      <EntityTypeMapping TypeName="insedluModel.comment">
+        <MappingFragment StoreEntitySet="comment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="comment1" ColumnName="comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="companies">
+      <EntityTypeMapping TypeName="insedluModel.company">
+        <MappingFragment StoreEntitySet="company">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="mission_statement" ColumnName="mission_statement" />
+          <ScalarProperty Name="service_id" ColumnName="service_id" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="companyservices">
+      <EntityTypeMapping TypeName="insedluModel.companyservice">
+        <MappingFragment StoreEntitySet="companyservices">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="consultancies">
+      <EntityTypeMapping TypeName="insedluModel.consultancy">
+        <MappingFragment StoreEntitySet="consultancy">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="departments">
+      <EntityTypeMapping TypeName="insedluModel.department">
+        <MappingFragment StoreEntitySet="department">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="developmentplans">
+      <EntityTypeMapping TypeName="insedluModel.developmentplan">
+        <MappingFragment StoreEntitySet="developmentplans">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="documenttypes">
+      <EntityTypeMapping TypeName="insedluModel.documenttype">
+        <MappingFragment StoreEntitySet="documenttype">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="doc_type" ColumnName="doc_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="durationtypes">
+      <EntityTypeMapping TypeName="insedluModel.durationtype">
+        <MappingFragment StoreEntitySet="durationtype">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="employees">
+      <EntityTypeMapping TypeName="insedluModel.employee">
+        <MappingFragment StoreEntitySet="employees">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="employee_type" ColumnName="employee_type" />
+          <ScalarProperty Name="no_of_employees" ColumnName="no_of_employees" />
+          <ScalarProperty Name="end_start" ColumnName="end_start" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="executivesummaries">
+      <EntityTypeMapping TypeName="insedluModel.executivesummary">
+        <MappingFragment StoreEntitySet="executivesummary">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="employee_type" ColumnName="employee_type" />
+          <ScalarProperty Name="no_of_employees" ColumnName="no_of_employees" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fieldworkstatistics">
+      <EntityTypeMapping TypeName="insedluModel.fieldworkstatistic">
+        <MappingFragment StoreEntitySet="fieldworkstatistics">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="pulse_count" ColumnName="pulse_count" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fieldworktypes">
+      <EntityTypeMapping TypeName="insedluModel.fieldworktype">
+        <MappingFragment StoreEntitySet="fieldworktype">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loggings">
+      <EntityTypeMapping TypeName="insedluModel.logging">
+        <MappingFragment StoreEntitySet="logging">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="duration_type_id" ColumnName="duration_type_id" />
+          <ScalarProperty Name="logger" ColumnName="logger" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="messages">
+      <EntityTypeMapping TypeName="insedluModel.message">
+        <MappingFragment StoreEntitySet="message">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="level" ColumnName="level" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="mystories">
+      <EntityTypeMapping TypeName="insedluModel.mystory">
+        <MappingFragment StoreEntitySet="mystory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="story" ColumnName="story" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="notifications">
+      <EntityTypeMapping TypeName="insedluModel.notification">
+        <MappingFragment StoreEntitySet="notification">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="printmaterials">
+      <EntityTypeMapping TypeName="insedluModel.printmaterial">
+        <MappingFragment StoreEntitySet="printmaterial">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="quantity" ColumnName="quantity" />
+          <ScalarProperty Name="end_start" ColumnName="end_start" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projects">
+      <EntityTypeMapping TypeName="insedluModel.project">
+        <MappingFragment StoreEntitySet="project">
+          <ScalarProperty Name="client_id" ColumnName="client_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="team" ColumnName="team" />
+          <ScalarProperty Name="department_name" ColumnName="department_name" />
+          <ScalarProperty Name="conclusion" ColumnName="conclusion" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_cat_id" ColumnName="proj_cat_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="upload_id" ColumnName="upload_id" />
+          <ScalarProperty Name="exec_summary_id" ColumnName="exec_summary_id" />
+          <ScalarProperty Name="company_id" ColumnName="company_id" />
+          <ScalarProperty Name="policy_id" ColumnName="policy_id" />
+          <ScalarProperty Name="methodology_id" ColumnName="methodology_id" />
+          <ScalarProperty Name="proj_reference" ColumnName="proj_reference" />
+          <ScalarProperty Name="cost_plan_id" ColumnName="cost_plan_id" />
+          <ScalarProperty Name="risk_id" ColumnName="risk_id" />
+          <ScalarProperty Name="coverpage_id" ColumnName="coverpage_id" />
+          <ScalarProperty Name="jvCompany_id" ColumnName="jvCompany_id" />
+          <ScalarProperty Name="scope_id" ColumnName="scope_id" />
+          <ScalarProperty Name="projectTeam_id" ColumnName="projectTeam_id" />
+          <ScalarProperty Name="implement_id" ColumnName="implement_id" />
+          <ScalarProperty Name="whyChoose_id" ColumnName="whyChoose_id" />
+          <ScalarProperty Name="bee_id" ColumnName="bee_id" />
+          <ScalarProperty Name="duration_type_id" ColumnName="duration_type_id" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="project_type" ColumnName="project_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectcategories">
+      <EntityTypeMapping TypeName="insedluModel.projectcategory">
+        <MappingFragment StoreEntitySet="projectcategory">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectcostplans">
+      <EntityTypeMapping TypeName="insedluModel.projectcostplan">
+        <MappingFragment StoreEntitySet="projectcostplan">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectcoverpages">
+      <EntityTypeMapping TypeName="insedluModel.projectcoverpage">
+        <MappingFragment StoreEntitySet="projectcoverpage">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="s" ColumnName="s" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectdocuments">
+      <EntityTypeMapping TypeName="insedluModel.projectdocument">
+        <MappingFragment StoreEntitySet="projectdocuments">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="doc_type" ColumnName="doc_type" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+          <ScalarProperty Name="file" ColumnName="file" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectimplementationtimes">
+      <EntityTypeMapping TypeName="insedluModel.projectimplementationtime">
+        <MappingFragment StoreEntitySet="projectimplementationtime">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectjvcompanies">
+      <EntityTypeMapping TypeName="insedluModel.projectjvcompany">
+        <MappingFragment StoreEntitySet="projectjvcompany">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectmethodologies">
+      <EntityTypeMapping TypeName="insedluModel.projectmethodology">
+        <MappingFragment StoreEntitySet="projectmethodology">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectparameters">
+      <EntityTypeMapping TypeName="insedluModel.projectparameter">
+        <MappingFragment StoreEntitySet="projectparameter">
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="variable_id" ColumnName="variable_id" />
+          <ScalarProperty Name="create_at" ColumnName="create_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="created_by" ColumnName="created_by" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectpolicies">
+      <EntityTypeMapping TypeName="insedluModel.projectpolicy">
+        <MappingFragment StoreEntitySet="projectpolicy">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="policy_number" ColumnName="policy_number" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectprojections">
+      <EntityTypeMapping TypeName="insedluModel.projectprojection">
+        <MappingFragment StoreEntitySet="projectprojections">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="employees" ColumnName="employees" />
+          <ScalarProperty Name="vehicle" ColumnName="vehicle" />
+          <ScalarProperty Name="accomodation" ColumnName="accomodation" />
+          <ScalarProperty Name="print_material" ColumnName="print_material" />
+          <ScalarProperty Name="refreshments" ColumnName="refreshments" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="wifi_data" ColumnName="wifi_data" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectproposals">
+      <EntityTypeMapping TypeName="insedluModel.projectproposal">
+        <MappingFragment StoreEntitySet="projectproposal">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="file" ColumnName="file" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+          <ScalarProperty Name="duration_type" ColumnName="duration_type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectreferences">
+      <EntityTypeMapping TypeName="insedluModel.projectreference">
+        <MappingFragment StoreEntitySet="projectreferences">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectscopeofworks">
+      <EntityTypeMapping TypeName="insedluModel.projectscopeofwork">
+        <MappingFragment StoreEntitySet="projectscopeofwork">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectstatus">
+      <EntityTypeMapping TypeName="insedluModel.projectstatu">
+        <MappingFragment StoreEntitySet="projectstatus">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="projectteams">
+      <EntityTypeMapping TypeName="insedluModel.projectteam">
+        <MappingFragment StoreEntitySet="projectteam">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proposalusers">
+      <EntityTypeMapping TypeName="insedluModel.proposaluser">
+        <MappingFragment StoreEntitySet="proposaluser">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="users" ColumnName="users" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="refreshments">
+      <EntityTypeMapping TypeName="insedluModel.refreshment">
+        <MappingFragment StoreEntitySet="refreshment">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="end_start" ColumnName="end_start" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="researches">
+      <EntityTypeMapping TypeName="insedluModel.research">
+        <MappingFragment StoreEntitySet="research">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="riskanalysis">
+      <EntityTypeMapping TypeName="insedluModel.riskanalysi">
+        <MappingFragment StoreEntitySet="riskanalysis">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="risk_analysis" ColumnName="risk_analysis" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="smallprojects">
+      <EntityTypeMapping TypeName="insedluModel.smallproject">
+        <MappingFragment StoreEntitySet="smallproject">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="administrator" ColumnName="administrator" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tasks">
+      <EntityTypeMapping TypeName="insedluModel.task">
+        <MappingFragment StoreEntitySet="task">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="body" ColumnName="body" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="telephones">
+      <EntityTypeMapping TypeName="insedluModel.telephone">
+        <MappingFragment StoreEntitySet="telephone">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="end_start" ColumnName="end_start" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="insedluModel.user">
+        <MappingFragment StoreEntitySet="user">
+          <ScalarProperty Name="contact_number" ColumnName="contact_number" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="recovery_question" ColumnName="recovery_question" />
+          <ScalarProperty Name="recovery_answer" ColumnName="recovery_answer" />
+          <ScalarProperty Name="temporary_password" ColumnName="temporary_password" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="department" ColumnName="department" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="duration_type_id" ColumnName="duration_type_id" />
+          <ScalarProperty Name="user_type_id" ColumnName="user_type_id" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_project">
+      <EntityTypeMapping TypeName="insedluModel.user_project">
+        <MappingFragment StoreEntitySet="user_project">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usertypes">
+      <EntityTypeMapping TypeName="insedluModel.usertype">
+        <MappingFragment StoreEntitySet="usertype">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="status" ColumnName="status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="variables">
+      <EntityTypeMapping TypeName="insedluModel.variable">
+        <MappingFragment StoreEntitySet="variables">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="access_key" ColumnName="access_key" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vehicles">
+      <EntityTypeMapping TypeName="insedluModel.vehicle">
+        <MappingFragment StoreEntitySet="vehicle">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="mileage" ColumnName="mileage" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="end_start" ColumnName="end_start" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="whychoosebizs">
+      <EntityTypeMapping TypeName="insedluModel.whychoosebiz">
+        <MappingFragment StoreEntitySet="whychoosebiz">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="content" ColumnName="content" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="wifis">
+      <EntityTypeMapping TypeName="insedluModel.wifi">
+        <MappingFragment StoreEntitySet="wifi">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="end_start" ColumnName="end_start" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="worklogs">
+      <EntityTypeMapping TypeName="insedluModel.worklog">
+        <MappingFragment StoreEntitySet="worklog">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="date_logged" ColumnName="date_logged" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="proj_id" ColumnName="proj_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="get_assets_total" FunctionName="insedluModel.Store.get_assets_total">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="insedluModel.get_assets_total_Result" />
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="uploads">
+      <EntityTypeMapping TypeName="insedluModel.upload">
+        <MappingFragment StoreEntitySet="upload">
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="duration_type_id" ColumnName="duration_type_id" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="content_type" ColumnName="content_type" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="file_location" ColumnName="file_location" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="accommodations">
+      <EntityTypeMapping TypeName="insedluModel.accommodation">
+        <MappingFragment StoreEntitySet="accommodation">
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="cost" ColumnName="cost" />
+          <ScalarProperty Name="end_start" ColumnName="end_start" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="location" ColumnName="location" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userprofiles">
+      <EntityTypeMapping TypeName="insedluModel.userprofile">
+        <MappingFragment StoreEntitySet="userprofile">
+          <ScalarProperty Name="past_experience" ColumnName="past_experience" />
+          <ScalarProperty Name="cv" ColumnName="cv" />
+          <ScalarProperty Name="biography" ColumnName="biography" />
+          <ScalarProperty Name="position" ColumnName="position" />
+          <ScalarProperty Name="contact_number" ColumnName="contact_number" />
+          <ScalarProperty Name="department_id" ColumnName="department_id" />
+          <ScalarProperty Name="job_title" ColumnName="job_title" />
+          <ScalarProperty Name="profile_pic" ColumnName="profile_pic" />
+          <ScalarProperty Name="task_id" ColumnName="task_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="proposaltypes">
+      <EntityTypeMapping TypeName="insedluModel.proposaltype">
+        <MappingFragment StoreEntitySet="proposaltype">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="insedluModel.client">
+        <MappingFragment StoreEntitySet="client">
+          <ScalarProperty Name="modified_at" ColumnName="modified_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="contact_number" ColumnName="contact_number" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

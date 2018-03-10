@@ -1,0 +1,17 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title> Task Assignment</title>
+</head>
+<body>
+Dear <b>%USERNAME%</b><br/>
+
+Please note that you have been assigned to work on the following task: %TASKDESCRIPTION% by %ASSIGNER% that is due by the %DUEDATE%.
+    <br/>
+<img src="%FOOTERIMAGE%"/>
+
+Thanks <br/>
+
+Insedlu Administrator
+
+</body>
+</html>

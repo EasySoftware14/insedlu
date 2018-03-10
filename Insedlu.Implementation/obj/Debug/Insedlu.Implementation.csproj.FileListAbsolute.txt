@@ -1,0 +1,15 @@
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\Insedlu.Implementation.dll.config
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\Insedlu.Implementation.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\Insedlu.Implementation.pdb
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\DotNetZip.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\Iesi.Collections.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\NHibernate.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\NHibernate.Mapping.Attributes.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\VirtualPath.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\VirtualPath.DotNetZip.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\DotNetZip.xml
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\Iesi.Collections.xml
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\bin\Debug\NHibernate.xml
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\obj\Debug\Insedlu.Implementation.csprojResolveAssemblyReference.cache
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\obj\Debug\Insedlu.Implementation.dll
+C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Implementation\obj\Debug\Insedlu.Implementation.pdb

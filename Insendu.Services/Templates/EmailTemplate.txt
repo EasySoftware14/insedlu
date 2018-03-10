@@ -1,0 +1,61 @@
+﻿ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8">
+	<title>Country Setup Confirmation</title>
+</head>
+
+<body style="margin:0px;padding:0px;">
+<style type="text/css">.ExternalClass {width: 100%;}</style>
+<div class="ExternalClass" style="width:100%;height:100%;background:#fff;">
+	<p>
+		Dear %ADMIN%
+	</p>
+	<p>
+		This email confirms that you have been activated as a Administrator for %NAME% on the CPD Management system on %DATE%
+	</p>
+	<p>
+		Please click on this <a href='%LINK%'>link</a> to confirm your registration as Administrator, as well as you will need to setup a new personal password. 
+		This is necessary in order to ensure integrity and security of the system. 
+		Failure to complete this step will mean that you will not have access to the CPD Management system.
+	</p>
+	<p>
+		If you have any queries, please email Maria-Luz at MMartinez@fia.com
+	</p>
+		Regards
+	<br/>
+	<br/>
+		CPD Network Admin team
+	<br/>
+	<br/>
+		FEDERATION INTERNATIONALE DE L'AUTOMOBILE
+	<br/>		
+		8, Place de la Concorde 
+	<br/>
+		75008 Paris - France
+	<br/>
+		Tel: +33 1 43 12 4455 
+	<br/>
+		Fax: +33 1 43 12 4466 
+	<br/>
+		E-Mail: cpdorders@fia.com 
+	<br/>
+	<br/>
+		<img src='%FOOTERIMAGE%'/>
+	<br/>
+		Please do NOT reply to this message as it is sent from an unattended mailbox
+	<br/>
+	<br/>
+		This message was sent to %ADMINEMAIL%
+	<br/>
+	<br/>
+	<p>
+		This message and any attachments are confidential and intended solely for the addressee. If you have received this message in error please notify the FIA, telephone number <u>+33 (0) 1 43 12 44 55.</u>
+		Any unauthorised use,alteration or dissemination of the contents of this email is strictly prohibited.In no event will the FIA or the sender be liable in any manner whatsoever to any person for loss or any
+		direct,indirect, special or consequential damages arising from use of this email or any linked website, including, without limitation from any lost profits business interruption loss of programmes or
+		other data that may be stored on any information handing system or otherwise from any assurance that this email is virus free even if the FIA is expressly advised of the possibility of such damages.
+	</p>
+	<br/>
+</div>
+</body>
+</html>

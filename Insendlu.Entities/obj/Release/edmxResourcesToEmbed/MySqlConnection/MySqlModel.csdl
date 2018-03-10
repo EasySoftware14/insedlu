@@ -1,0 +1,720 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="insedluModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="accounting">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="data" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="activity">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="asset" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="assert_id" Type="Int32" />
+    <Property Name="worklog_id" Type="Int32" />
+    <Property Name="cost" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="location_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="material_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="material_quantity" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="asset">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="beestatu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="proj_id" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="C_content_" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="businessplan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="content" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="comment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="proj_id" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="comment1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="company">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="mission_statement" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="service_id" Type="Int32" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="companyservice">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="consultancy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="data" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="proj_id" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="department">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="developmentplan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="content" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="user_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="documenttype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="doc_type" Type="Int32" />
+  </EntityType>
+  <EntityType Name="durationtype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="employee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cost" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" />
+    <Property Name="employee_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="no_of_employees" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="end_start" Type="DateTime" />
+    <Property Name="project_id" Type="Int32" />
+    <Property Name="worklog_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="executivesummary">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="content" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="employee_type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="no_of_employees" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="project_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="fieldworkstatistic">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="start_date" Type="DateTime" />
+    <Property Name="pulse_count" Type="Int32" />
+    <Property Name="end_date" Type="DateTime" />
+    <Property Name="project_id" Type="Int32" />
+    <Property Name="worklog_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="fieldworktype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="logging">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="duration" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="department" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="project_id" Type="Int32" />
+    <Property Name="duration_type_id" Type="Int32" />
+    <Property Name="logger" Type="Int32" />
+  </EntityType>
+  <EntityType Name="message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="level" Type="Int32" />
+  </EntityType>
+  <EntityType Name="mystory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="story" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="notification">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="body" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="project_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="printmaterial">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="worklog_id" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="quantity" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="end_start" Type="DateTime" />
+    <Property Name="project_id" Type="Int32" />
+    <Property Name="cost" Type="Int32" />
+  </EntityType>
+  <EntityType Name="project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="duration" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="team" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="department_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="conclusion" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_cat_id" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="upload_id" Type="Int32" />
+    <Property Name="exec_summary_id" Type="Int32" />
+    <Property Name="company_id" Type="Int32" />
+    <Property Name="policy_id" Type="Int32" />
+    <Property Name="methodology_id" Type="Int32" />
+    <Property Name="proj_reference" Type="Int32" />
+    <Property Name="cost_plan_id" Type="Int32" />
+    <Property Name="risk_id" Type="Int32" />
+    <Property Name="coverpage_id" Type="Int32" />
+    <Property Name="jvCompany_id" Type="Int32" />
+    <Property Name="scope_id" Type="Int32" />
+    <Property Name="projectTeam_id" Type="Int32" />
+    <Property Name="implement_id" Type="Int32" />
+    <Property Name="whyChoose_id" Type="Int32" />
+    <Property Name="bee_id" Type="Int32" />
+    <Property Name="duration_type_id" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" />
+    <Property Name="end_date" Type="DateTime" />
+    <Property Name="project_type" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="client_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="projectcategory">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="projectcostplan">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="details" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="projectcoverpage">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="s" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="content" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="projectdocument">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="location" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="doc_type" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+    <Property Name="file" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="projectimplementationtime">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="content" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="projectjvcompany">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="content" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="projectmethodology">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="content" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="projectparameter">
+    <Key>
+      <PropertyRef Name="project_id" />
+    </Key>
+    <Property Name="project_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="variable_id" Type="Int32" />
+    <Property Name="create_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="created_by" Type="Int32" />
+  </EntityType>
+  <EntityType Name="projectpolicy">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="policy_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="content" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="projectprojection">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="employees" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="vehicle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="accomodation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="print_material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="refreshments" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="telephone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="wifi_data" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="proj_id" Type="Int32" />
+    <Property Name="user_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="projectproposal">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="file" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+    <Property Name="duration_type" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="projectreference">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="content" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="projectscopeofwork">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="content" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="projectstatu">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="projectteam">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="content" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="proposaluser">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="users" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="refreshment">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="worklog_id" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" />
+    <Property Name="cost" Type="Int32" />
+    <Property Name="end_start" Type="DateTime" />
+    <Property Name="project_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="research">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="data" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="riskanalysi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="risk_analysis" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="smallproject">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="duration" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="department" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="administrator" Type="Int32" />
+  </EntityType>
+  <EntityType Name="task">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="body" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="user_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="telephone">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="worklog_id" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" />
+    <Property Name="cost" Type="Int32" />
+    <Property Name="end_start" Type="DateTime" />
+    <Property Name="project_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="recovery_question" Type="Int32" />
+    <Property Name="recovery_answer" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="temporary_password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="department" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="project_id" Type="Int32" />
+    <Property Name="duration_type_id" Type="Int32" />
+    <Property Name="user_type_id" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="contact_number" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="user_project">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="usertype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="Int32" />
+    <Property Name="status" Type="Int32" />
+  </EntityType>
+  <EntityType Name="variable">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="access_key" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="vehicle">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="worklog_id" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" />
+    <Property Name="cost" Type="Int32" />
+    <Property Name="mileage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="end_start" Type="DateTime" />
+    <Property Name="project_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="whychoosebiz">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="content" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="wifi">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="worklog_id" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" />
+    <Property Name="cost" Type="Int32" />
+    <Property Name="end_start" Type="DateTime" />
+    <Property Name="project_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="worklog">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="date_logged" Type="DateTime" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="proj_id" Type="Int32" />
+  </EntityType>
+  <EntityContainer Name="insedluEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="accountings" EntityType="Self.accounting" />
+    <EntitySet Name="activities" EntityType="Self.activity" />
+    <EntitySet Name="assets" EntityType="Self.asset" />
+    <EntitySet Name="beestatus" EntityType="Self.beestatu" />
+    <EntitySet Name="businessplans" EntityType="Self.businessplan" />
+    <EntitySet Name="comments" EntityType="Self.comment" />
+    <EntitySet Name="companies" EntityType="Self.company" />
+    <EntitySet Name="companyservices" EntityType="Self.companyservice" />
+    <EntitySet Name="consultancies" EntityType="Self.consultancy" />
+    <EntitySet Name="departments" EntityType="Self.department" />
+    <EntitySet Name="developmentplans" EntityType="Self.developmentplan" />
+    <EntitySet Name="documenttypes" EntityType="Self.documenttype" />
+    <EntitySet Name="durationtypes" EntityType="Self.durationtype" />
+    <EntitySet Name="employees" EntityType="Self.employee" />
+    <EntitySet Name="executivesummaries" EntityType="Self.executivesummary" />
+    <EntitySet Name="fieldworkstatistics" EntityType="Self.fieldworkstatistic" />
+    <EntitySet Name="fieldworktypes" EntityType="Self.fieldworktype" />
+    <EntitySet Name="loggings" EntityType="Self.logging" />
+    <EntitySet Name="messages" EntityType="Self.message" />
+    <EntitySet Name="mystories" EntityType="Self.mystory" />
+    <EntitySet Name="notifications" EntityType="Self.notification" />
+    <EntitySet Name="printmaterials" EntityType="Self.printmaterial" />
+    <EntitySet Name="projects" EntityType="Self.project" />
+    <EntitySet Name="projectcategories" EntityType="Self.projectcategory" />
+    <EntitySet Name="projectcostplans" EntityType="Self.projectcostplan" />
+    <EntitySet Name="projectcoverpages" EntityType="Self.projectcoverpage" />
+    <EntitySet Name="projectdocuments" EntityType="Self.projectdocument" />
+    <EntitySet Name="projectimplementationtimes" EntityType="Self.projectimplementationtime" />
+    <EntitySet Name="projectjvcompanies" EntityType="Self.projectjvcompany" />
+    <EntitySet Name="projectmethodologies" EntityType="Self.projectmethodology" />
+    <EntitySet Name="projectparameters" EntityType="Self.projectparameter" />
+    <EntitySet Name="projectpolicies" EntityType="Self.projectpolicy" />
+    <EntitySet Name="projectprojections" EntityType="Self.projectprojection" />
+    <EntitySet Name="projectproposals" EntityType="Self.projectproposal" />
+    <EntitySet Name="projectreferences" EntityType="Self.projectreference" />
+    <EntitySet Name="projectscopeofworks" EntityType="Self.projectscopeofwork" />
+    <EntitySet Name="projectstatus" EntityType="Self.projectstatu" />
+    <EntitySet Name="projectteams" EntityType="Self.projectteam" />
+    <EntitySet Name="proposalusers" EntityType="Self.proposaluser" />
+    <EntitySet Name="refreshments" EntityType="Self.refreshment" />
+    <EntitySet Name="researches" EntityType="Self.research" />
+    <EntitySet Name="riskanalysis" EntityType="Self.riskanalysi" />
+    <EntitySet Name="smallprojects" EntityType="Self.smallproject" />
+    <EntitySet Name="tasks" EntityType="Self.task" />
+    <EntitySet Name="telephones" EntityType="Self.telephone" />
+    <EntitySet Name="users" EntityType="Self.user" />
+    <EntitySet Name="user_project" EntityType="Self.user_project" />
+    <EntitySet Name="usertypes" EntityType="Self.usertype" />
+    <EntitySet Name="variables" EntityType="Self.variable" />
+    <EntitySet Name="vehicles" EntityType="Self.vehicle" />
+    <EntitySet Name="whychoosebizs" EntityType="Self.whychoosebiz" />
+    <EntitySet Name="wifis" EntityType="Self.wifi" />
+    <EntitySet Name="worklogs" EntityType="Self.worklog" />
+    <FunctionImport Name="get_assets_total" ReturnType="Collection(insedluModel.get_assets_total_Result)">
+      <Parameter Name="projId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <EntitySet Name="uploads" EntityType="insedluModel.upload" />
+    <EntitySet Name="accommodations" EntityType="insedluModel.accommodation" />
+    <EntitySet Name="userprofiles" EntityType="insedluModel.userprofile" />
+    <EntitySet Name="proposaltypes" EntityType="insedluModel.proposaltype" />
+    <EntitySet Name="clients" EntityType="insedluModel.client" />
+  </EntityContainer>
+  <ComplexType Name="get_assets_total_Result" />
+  <EntityType Name="upload">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="file_location" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="name" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="content_type" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="modified_at" Type="DateTime" />
+    <Property Name="data" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="duration_type_id" Type="Int32" />
+    <Property Name="user_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="accommodation">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="start_date" Type="DateTime" />
+    <Property Name="end_start" Type="DateTime" />
+    <Property Name="cost" Type="Int32" />
+    <Property Name="project_id" Type="Int32" />
+    <Property Name="worklog_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="userprofile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="user_id" Type="Int32" />
+    <Property Name="task_id" Type="Int32" />
+    <Property Name="profile_pic" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="job_title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="department_id" Type="Int32" />
+    <Property Name="contact_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="position" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="biography" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="cv" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="past_experience" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="proposaltype">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="client">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="contact_number" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="created_at" Type="DateTime" />
+    <Property Name="modified_at" Type="DateTime" />
+  </EntityType>
+</Schema>
