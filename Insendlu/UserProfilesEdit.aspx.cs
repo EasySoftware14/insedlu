@@ -5,11 +5,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.HtmlControls;
-using System.Web.UI.WebControls;
 using AjaxControlToolkit;
 using Insendlu.Entities.Connection;
-using Insendlu.Entities.MySqlConnection;
 using Insendu.Services;
 
 namespace Insendlu
@@ -19,7 +16,6 @@ namespace Insendlu
         private static int _id;
         private readonly InsendluEntities _insendluEntities;
         private readonly ImageService _imageService;
-        //private readonly insedluEntities _insendluEntities;
         private readonly ProjectService _projectService;
 
         public UserProfilesEdit()
@@ -52,6 +48,19 @@ namespace Insendlu
                     Response.Redirect("index.aspx");
                 }
 
+                if (Session["image"] != null)
+                {
+                    var images = Session["image"].ToString();
+                    if (!string.IsNullOrEmpty(images))
+                    {
+                        image.Src = images;
+                        ImgageCopy.Src = images;
+                    }
+
+                }
+            }
+            else
+            {
                 if (Session["image"] != null)
                 {
                     var images = Session["image"].ToString();
@@ -152,6 +161,7 @@ namespace Insendlu
                     FillDetails(_id);
                     if (getProfile.profile_pic != null)
                         SetImage(byteArray);
+                    Response.Redirect("Dashboard.aspx");
                 }
                 catch (DbEntityValidationException validation)
                 {
@@ -184,15 +194,17 @@ namespace Insendlu
                     SetImage(byteArray);
 
                 FillDetails(_id);
+                Response.Redirect("Dashboard.aspx");
             }
 
         }
-
         private void SetImage(byte[] byteArray)
         {
             var imgString = "data: Image/png;base64," + Convert.ToBase64String(byteArray);
 
             image.Src = imgString;
+            Session["image"] = "data: Image/png;base64," + Convert.ToBase64String(byteArray);
+             
         }
     }
 }

@@ -7,7 +7,6 @@ using Insendlu.Encryptor;
 using Insendlu.Entities;
 using Insendlu.Entities.Connection;
 ////using Insendlu.Entities.Domain;
-using Insendlu.Entities.MySqlConnection;
 
 namespace Insendu.Services
 {
@@ -170,6 +169,133 @@ namespace Insendu.Services
             
             return employees;
         }
+
+        public IList<ProjectManagementFee> GetManagementFees(string date, long projId)
+        {
+            var newDate = Convert.ToDateTime(date);
+            var workLog = GetWorkLogging(projId, newDate);
+            var projectManagement = new List<ProjectManagementFee>();
+
+            foreach (var log in workLog)
+            {
+                if (log != null)
+                {
+                    var employ =
+                        _insendluEntities.ProjectManagementFees.SingleOrDefault(
+                            x => x.worklog_id == log.id && x.start_date == newDate);
+
+                    projectManagement.Add(employ);
+                }
+            }
+
+            return projectManagement;
+        }
+
+        public IList<SustenenceFee> GetSustenenceFees(string date, long projId)
+        {
+            var newDate = Convert.ToDateTime(date);
+            var workLog = GetWorkLogging(projId, newDate);
+            var sustenenceFees = new List<SustenenceFee>();
+
+            foreach (var log in workLog)
+            {
+                if (log != null)
+                {
+                    var employ =
+                        _insendluEntities.SustenenceFees.SingleOrDefault(
+                            x => x.worklog_id == log.id && x.start_date == newDate);
+
+                    sustenenceFees.Add(employ);
+                }
+            }
+
+            return sustenenceFees;
+        }
+
+        public IList<ContigencyFee> GetContigencyFees(string date, long projId)
+        {
+            var newDate = Convert.ToDateTime(date);
+            var workLog = GetWorkLogging(projId, newDate);
+            var contigencyFees = new List<ContigencyFee>();
+
+            foreach (var log in workLog)
+            {
+                if (log != null)
+                {
+                    var employ =
+                        _insendluEntities.ContigencyFees.SingleOrDefault(
+                            x => x.worklog_id == log.id && x.start_date == newDate);
+
+                    contigencyFees.Add(employ);
+                }
+            }
+
+            return contigencyFees;
+        }
+
+        public IList<Logistic> GetLogistics(string date, long projId)
+        {
+            var newDate = Convert.ToDateTime(date);
+            var workLog = GetWorkLogging(projId, newDate);
+            var logistics = new List<Logistic>();
+
+            foreach (var log in workLog)
+            {
+                if (log != null)
+                {
+                    var employ =
+                        _insendluEntities.Logistics.SingleOrDefault(
+                            x => x.worklog_id == log.id && x.start_date == newDate);
+
+                    logistics.Add(employ);
+                }
+            }
+
+            return logistics;
+        }
+
+        public IList<DataAnalyst> GetDataAnalysts(string date, long projId)
+        {
+            var newDate = Convert.ToDateTime(date);
+            var workLog = GetWorkLogging(projId, newDate);
+            var dataAnalysts = new List<DataAnalyst>();
+
+            foreach (var log in workLog)
+            {
+                if (log != null)
+                {
+                    var employ =
+                        _insendluEntities.DataAnalysts.SingleOrDefault(
+                            x => x.worklog_id == log.id && x.start_date == newDate);
+
+                    dataAnalysts.Add(employ);
+                }
+            }
+
+            return dataAnalysts;
+        }
+
+        public IList<SurveyMonkey> GetSurveyMonkeys(string date, long projId)
+        {
+            var newDate = Convert.ToDateTime(date);
+            var workLog = GetWorkLogging(projId, newDate);
+            var surveyMonkeys = new List<SurveyMonkey>();
+
+            foreach (var log in workLog)
+            {
+                if (log != null)
+                {
+                    var employ =
+                        _insendluEntities.SurveyMonkeys.SingleOrDefault(
+                            x => x.worklog_id == log.id && x.start_date == newDate);
+
+                    surveyMonkeys.Add(employ);
+                }
+            }
+
+            return surveyMonkeys;
+        }
+
         private IList<WorkLog> GetWorkLogging(long projId, DateTime date)
         {
             var newDate = date.Date;

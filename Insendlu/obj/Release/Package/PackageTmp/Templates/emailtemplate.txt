@@ -1,0 +1,18 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Password Reset</title>
+</head>
+<body>
+Dear <b>%USERNAME%</b><br/>
+
+Please note that you have been registered as a user on the Insedlu System %DATE%, to login please click <a href="%LINK%">here</a> <br/>
+to reset your password.
+    <br/>
+<img src="%FOOTERIMAGE%"/>
+
+Thanks <br/>
+
+Insedlu Administrator
+
+</body>
+</html>

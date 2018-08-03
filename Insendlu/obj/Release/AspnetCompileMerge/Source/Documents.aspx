@@ -4,35 +4,15 @@
 
     <div class="container-fluid">
         <div class="row-fluid">
-            <h1 class="item-blue">Documents Related to Project</h1>
+            <br/>
+            <label style="font-size: x-large">Documents Related to Project</label>
             <hr />
-            <div class="col-sm-6 col-md-6 col-md-offset-0">
-                <div class="panel-group">
-                    <div class="panel panel-info">
-                        <a class="panel-info" data-toggle="collapse" data-parent="#accordion1" href="#collapseTwo">
-                            <div class="panel-heading">
-                                <h3 class="panel-title" style="color: lightsalmon">Upload Supporting Documents </h3>
-                            </div>
-                        </a>
-                        <div id="collapseTwo" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <br />
-                                <asp:FileUpload runat="server" ID="uploadDocs" AllowMultiple="True" CssClass="fa-upload" />
-
-                                <br />
-                                <br />
-
-                                <asp:Button runat="server" ID="attachDocs" OnClick="attachDocs_OnClick" CssClass="btn btn-success" Text="Attach Document(s)" />
-                                <br />
-                                <br />
-                                <label class="label-success" runat="server" id="success"></label>
-                                <%--                                <ajaxToolkit:AjaxFileUpload ID="AjaxFileUpload1" AllowedFileTypes="doc,docx,pdf" OnUploadComplete="AjaxFileUpload1_OnUploadComplete" runat="server" />--%>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-6">
+            
+            <br/>
+            <div class="col-lg-12">
+                <asp:Button runat="server" ID="backToTrack" Text="Back to TrackWork" CssClass="btn btn-primary" OnClick="backToTrack_OnClick"/>
+                <br/>
+                <br/>
                 <div class="panel-group">
                     <div class="panel panel-default">
                         <a class="panel-default" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
@@ -43,6 +23,7 @@
                         <div id="collapseOne" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <br />
+                                <label class="label-success" runat="server" id="success"></label>
                                 <asp:Button runat="server" Height="80" ForeColor="green" Text="View Documents" CssClass="btn btn-sm btn-block btn-success" ID="ViewDocs" OnClick="ViewDocs_OnClick" />
                                 <br />
                             </div>

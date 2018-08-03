@@ -8,7 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ikvm.extensions;
 using Insendlu.Entities.Connection;
-using Insendlu.Entities.MySqlConnection;
+
 using Insendu.Services;
 using java.lang;
 using java.lang.reflect;

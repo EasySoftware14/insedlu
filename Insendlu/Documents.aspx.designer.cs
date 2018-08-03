@@ -13,22 +13,13 @@ namespace Insendlu {
     public partial class Documents {
         
         /// <summary>
-        /// uploadDocs control.
+        /// backToTrack control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload uploadDocs;
-        
-        /// <summary>
-        /// attachDocs control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button attachDocs;
+        protected global::System.Web.UI.WebControls.Button backToTrack;
         
         /// <summary>
         /// success control.

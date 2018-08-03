@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using AjaxControlToolkit;
 ////using Insendlu.Entities.Domain;
-using Insendlu.Entities.MySqlConnection;
+
 using Insendu.Services;
 
 namespace Insendlu

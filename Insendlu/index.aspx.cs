@@ -1,25 +1,25 @@
 ﻿using System;
+using System.Data.Entity;
 using System.Linq;
 using System.Drawing;
 using Insendlu.Entities.Connection;
 using Insendu.Services;
-using Insendlu.Entities.MySqlConnection;
 
 namespace Insendlu
 {
     public partial class HomePage : System.Web.UI.Page
     {
         private readonly InsendluEntities _insendluEntities;
-        private readonly insedluEntities _insedluEntities;
         private readonly ProjectService _projectService;
         private readonly Encryptor.Encryptor _encryptor;
+        private readonly EmailService _emailService;
 
         public HomePage()
         {
             _insendluEntities = new InsendluEntities();
-            _insedluEntities = new insedluEntities();
             _projectService = new ProjectService();
             _encryptor = new Encryptor.Encryptor();
+            _emailService = new EmailService();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -72,11 +72,6 @@ namespace Insendlu
                             }
                         }
 
-                        //if (user.user_type_id == 1)
-                        //{
-                        //    Response.Redirect("~/UserDashboard.aspx");
-                        //}
-
                         Response.Redirect("~/Dashboard.aspx");
                     }
                 }
@@ -101,11 +96,6 @@ namespace Insendlu
                             Session["image"] = "assets/images/avatars/user.jpg";
                         }
                     }
-
-                    //if (user.user_type_id == 2)
-                    //{
-                    //    Response.Redirect("~/UserDashboard.aspx");
-                    //}
 
                     Response.Redirect("~/Dashboard.aspx");
                 }
@@ -148,7 +138,24 @@ namespace Insendlu
 
         protected void Send_OnClick(object sender, EventArgs e)
         {
-            var here = forgotPassemail.Value;
+            var email = forgotPassemail.Value;
+            var user = _insendluEntities.Users.Single(x => x.email == email);
+
+            if (user != null)
+            {
+                user.password = null;
+                _insendluEntities.Entry(user).State = EntityState.Modified;
+                _insendluEntities.SaveChanges();
+
+                var tempPass = user.name + user.surname + "$";
+                var path = Server.MapPath("~/Templates/forgotpasswordtemplate.html");
+                var encryptedPass = _encryptor.Encrypt(tempPass);
+                user.temporary_password = encryptedPass;
+                _insendluEntities.Entry(user).State = EntityState.Modified;
+                _insendluEntities.SaveChanges();
+
+                _emailService.SendEmail(email, encryptedPass, path, user.name);
+            }
         }
     }
 }

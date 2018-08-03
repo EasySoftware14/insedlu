@@ -6,8 +6,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Insendlu.Entities;
 using Insendlu.Entities.Connection;
-//using Insendlu.Entities.Domain;
-using Insendlu.Entities.MySqlConnection;
 using Insendu.Services;
 
 namespace Insendlu
@@ -123,7 +121,7 @@ namespace Insendlu
                     department = depart,
                     duration = duration,
                     duration_type_id = durationTyp,
-                    logger = admin,
+                    members = admin.ToString(),
                     created_at = DateTime.Now,
                     modified_at = DateTime.Now,
                     project_id = Convert.ToInt32(project.id)
@@ -159,7 +157,7 @@ namespace Insendlu
                     department = depart,
                     duration = duration,
                     duration_type_id = durationTyp,
-                    logger = admin,
+                    members = admin.ToString(),
                     created_at = DateTime.Now,
                     modified_at = DateTime.Now,
                     project_id = Convert.ToInt32(pro.id)

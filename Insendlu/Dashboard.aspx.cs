@@ -3,13 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Validation;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 using Insendlu.Entities;
 using Insendlu.Entities.Connection;
 using Insendu.Services;
+using java.util;
+using Novacode;
 
 namespace Insendlu
 {
@@ -21,6 +25,7 @@ namespace Insendlu
         private readonly ProjectService _projectService;
         private readonly EmailService _emailService;
         private long _id;
+        public bool dateDueChecker = false;
 
         public Profile()
         {
@@ -32,7 +37,7 @@ namespace Insendlu
         protected void Page_Load(object sender, EventArgs e)
         {
             var id = new long();
-
+            var test = GetPostBackControlId(Page);
             if (Session["ID"] == null)
             {
                 Response.Redirect("Index.aspx");
@@ -49,11 +54,11 @@ namespace Insendlu
             {
                 id = Convert.ToInt64(Session["ID"]);
                 var userAddCheck = Convert.ToBoolean(Session["UserAdded"]) == true ? userSuccess.Visible = true : userSuccess.Visible = false;
-                SetUpSlide();
+                //SetUpSlide();
                 LoggingsBinding();
                 SetTasks(id);
 
-                
+
                 SetTasksForUpdate(_id);
                 var statuses = Enum.GetValues(typeof(TaskStatus)).Cast<TaskStatus>().ToList();
 
@@ -80,11 +85,56 @@ namespace Insendlu
                 DataGridBind();
                 LoggingsBinding();
                 GuideDataGridBind();
-                view.Content = String.Empty;
+                view.Content = string.Empty;
                 SetTasks(id);
             }
         }
+        public static string GetPostBackControlId(Page page)
+        {
+            if (!page.IsPostBack)
+                return string.Empty;
 
+            Control control = null;
+            // first we will check the "__EVENTTARGET" because if post back made by the controls
+            // which used "_doPostBack" function also available in Request.Form collection.
+            string controlName = page.Request.Params["__EVENTTARGET"];
+            if (!String.IsNullOrEmpty(controlName))
+            {
+                control = page.FindControl(controlName);
+            }
+            else
+            {
+                // if __EVENTTARGET is null, the control is a button type and we need to
+                // iterate over the form collection to find it
+
+                // ReSharper disable TooWideLocalVariableScope
+                string controlId;
+                Control foundControl;
+                // ReSharper restore TooWideLocalVariableScope
+
+                foreach (string ctl in page.Request.Form)
+                {
+                    // handle ImageButton they having an additional "quasi-property" 
+                    // in their Id which identifies mouse x and y coordinates
+                    if (ctl.EndsWith(".x") || ctl.EndsWith(".y"))
+                    {
+                        controlId = ctl.Substring(0, ctl.Length - 2);
+                        foundControl = page.FindControl(controlId);
+                    }
+                    else
+                    {
+                        foundControl = page.FindControl(ctl);
+                    }
+
+                    if (!(foundControl is IButtonControl)) continue;
+
+                    control = foundControl;
+                    break;
+                }
+            }
+
+            return control == null ? String.Empty : control.ID;
+        }
         private void SetTasksForUpdate(long id)
         {
             var myTasks = _projectService.MyTasks(id).OrderByDescending(x => x.created_at);
@@ -95,30 +145,44 @@ namespace Insendlu
                 tasksToUpdate.DataBind();
             }
         }
-
         private void LoggingsBinding()
         {
             var projects = _insedlu.Loggings.ToList();
             datagridview.DataSource = projects;
             datagridview.DataBind();
         }
-
         private void SetTasks(long id)
         {
             var myTasks = _projectService.MyTasks(id);
-            
+            var todaysDate = DateTime.Today.Date;
             if (myTasks != null)
             {
-               
+                var completedItems = new List<ListItem>();
+
                 // completed tasks
-                var completedId = (int) TaskStatus.Done;
+                var completedId = (int)TaskStatus.Done;
                 var completedTasksList = myTasks.Where(x => x.status == completedId).ToList();
                 if (completedTasksList.Count > 0)
                 {
-                    completedTasks.DataSource = completedTasksList.OrderByDescending(x => x.created_at); ;
-                    completedTasks.DataBind();
 
-                    completedTasks.Visible = true;
+                    foreach (var task in completedTasksList)
+                    {
+                        var due = DateTime.Today;
+
+                        if (task?.due_date != null) due = task.due_date.Value.Date;
+
+                        var days = GetRemainingDays(due, todaysDate);
+
+                        if (task != null)
+                        {
+                            if (days >= 0)
+                            {
+                                completedItems.Add(new ListItem(task.body));
+                            }
+                        }
+
+                        completedTasks.Visible = true;
+                    }
                 }
                 else
                 {
@@ -128,40 +192,68 @@ namespace Insendlu
                 var inProgressTasks = myTasks.Where(x => x.status != (int)TaskStatus.Done).ToList();
                 if (inProgressTasks.Count > 0)
                 {
-                    inProgress.DataSource = inProgressTasks.OrderByDescending(x => x.created_at); ;
-                    inProgress.DataBind();
+                    var inprogressItems = new List<ListItem>();
 
+                    foreach (var task in inProgressTasks)
+                    {
+                        var due = DateTime.Today;
+
+                        if (task?.due_date != null) due = task.due_date.Value.Date;
+
+                        var days = GetRemainingDays(due, todaysDate);
+
+                        if (task != null)
+                        {
+                            if (days < 0)
+                            {
+                                var listItem = new ListItem();
+                                listItem.Text = "NB: " + task.body.PadLeft(20).ToUpper() + " # " + (days * -1).ToString().ToUpper() + " DAYS OVERDUE.";
+                                listItem.Attributes.Add("style","color:red;");
+
+                                completedItems.Add(listItem);
+
+                            }
+                            else
+                                inprogressItems.Add(new ListItem(task.body.PadLeft(20) + " #                    " + days + " days left."));
+                        }
+                    }
+                    completedTasks.DataSource = completedItems; ;
+                    completedTasks.DataBind();
+
+                    inProgress.DataSource = inprogressItems;
+                    inProgress.DataBind();
                     inProgress.Visible = true;
+
                 }
                 else
                 {
                     lblNoTask.Visible = true;
                 }
                 // Assigned Tasks
-                var statsId = (int) TaskStatus.Assigned;
+                var statsId = (int)TaskStatus.Assigned;
                 var assigned = myTasks.Select(x => x).Where(x => x.status == statsId).ToList();
                 if (assigned.Count > 0)
                 {
                     var items = new List<ListItem>();
-                    
+
                     foreach (var task in assigned)
                     {
                         var userAssigned = new global::User();
-                        userAssigned = _projectService.GetUserById(task.user_id.Value);
+                        if (task.assigned_to != null)
+                            userAssigned = _projectService.GetUserById(task.assigned_to.Value);
 
                         if (userAssigned.id != 0)
                         {
-                            items.Add(new ListItem(task.body + "\t\t\t                 * Assignee: " + userAssigned.name + " " + userAssigned.surname + " *", task.id.ToString()));
+                            items.Add(new ListItem(task.body + "                 # Assignee: " + userAssigned.name + " " + userAssigned.surname, task.id.ToString()));
                         }
                         else
                         {
-                            items.Add(new ListItem(task.body + "                  *** Not Assigned ***"));
+                            items.Add(new ListItem(task.body + "                    # Not Assigned"));
                         }
                     }
-                    
+
                     lstAssignedTasks.DataSource = items;
                     lstAssignedTasks.DataBind();
-
                     lstAssignedTasks.Visible = true;
                 }
                 else
@@ -170,22 +262,59 @@ namespace Insendlu
                 }
 
                 myTasksList.Visible = true;
-                var tasksList = myTasks.Where(x => x.status == (int)TaskStatus.Assigned || x.status == (int) TaskStatus.NotAssigned).OrderByDescending(x => x.created_at).Select(y => y.body).ToList();
+                var tasksList = myTasks.Where(x => x.status == (int)TaskStatus.Assigned || x.status == (int)TaskStatus.NotAssigned).OrderByDescending(x => x.created_at).Select(y => y.body).ToList();
                 var stringbuild = new StringBuilder();
                 var count = 0;
 
-                foreach (var task in tasksList)
+                if (tasksList.Count < 1)
                 {
-                    count++;
-                    stringbuild.Append(count + ". " + task + Environment.NewLine);
+                    myTasksList.Visible = false;
+                    taskError.Visible = true;
+                }
+                else
+                {
+                    foreach (var task in tasksList)
+                    {
+                        count++;
+                        stringbuild.Append(count + ". " + task + Environment.NewLine);
+                    }
+
+                    myTasksList.Text = Convert.ToString(stringbuild);
                 }
 
-                myTasksList.Text = Convert.ToString(stringbuild);
+                //SetTaskProcess(inProgressTasks);
+                //inProgress.DataBind();
+            }
+
+        }
+        private void SetTaskProcess(List<Task> taskes)
+        {
+            var todaysDate = DateTime.Today.Date;
+
+            foreach (var task in taskes)
+            {
+                var due = DateTime.Today;
+                var daysLeft = 0;
+                if (task != null)
+                {
+                    if (task.due_date != null) due = task.due_date.Value.Date;
+                }
+
+                var days = GetRemainingDays(due, todaysDate);
+                var completion = _projectService.GeTaskCompletion(task.id);
+
+                if (days < 0)
+                    task.body = task.body + " \t" + "This task is " + Convert.ToInt32(completion.completion) * -1 + " days overdue.";
+                else
+                    task.body = task.body + " \t" + completion.completion + " days left to complete.";
 
             }
-           
         }
-        
+
+        private int GetTaskCompletionPercent()
+        {
+            return 4;
+        }
         private void ProfilePictureUpdate(long id)
         {
             var profile = (from userProf in _insedlu.UserProfiles
@@ -204,7 +333,7 @@ namespace Insendlu
                     var imgString = "data: Image/png;base64," + Convert.ToBase64String(imgBytes);
                     image.ImageUrl = imgString;
                 }
-               
+
             }
 
         }
@@ -826,9 +955,22 @@ namespace Insendlu
 
         protected void addTask_OnClick(object sender, EventArgs e)
         {
+            //var checkDate = CheckPreviousDate(dueDate.Text);
+
+
+            //if (checkDate)
+            //{
+            //    lblError.Visible = true;
+            //    return;
+            //}
+
+            //lblError.Visible = false;
             var taskDescription = taskDesciption.Text;
             var id = Convert.ToInt64(Session["ID"]);
             var taskDoc = new TaskDocument();
+            var stats = 0;
+            var selectedUserId = Convert.ToInt32(userList.SelectedValue);
+
 
             if (attachments.HasFile)
             {
@@ -842,13 +984,13 @@ namespace Insendlu
 
                     var fileByte = _imageService.ReadToEnd(file.InputStream);
 
-                     taskDoc = _insedlu.TaskDocuments.Add(
-                        new TaskDocument
-                        {
-                            name = fileName,
-                            created_at = DateTime.Today,
-                            file = fileByte
-                        });
+                    taskDoc = _insedlu.TaskDocuments.Add(
+                       new TaskDocument
+                       {
+                           name = fileName,
+                           created_at = DateTime.Today,
+                           file = fileByte
+                       });
 
                     try
                     {
@@ -859,15 +1001,18 @@ namespace Insendlu
                         Console.WriteLine(exception.EntityValidationErrors);
                         throw;
                     }
-                   
+
                 }
-                
+
             }
 
             if (!string.IsNullOrEmpty(taskDescription))
             {
-                
+
                 var date = DateTime.ParseExact(dueDate.Text, "dd/MM/yyyy", null);
+                var todaysDate = DateTime.Today;
+
+                var numberOfDays = GetRemainingDays(date, todaysDate);
 
                 var task = new Task
                 {
@@ -876,13 +1021,27 @@ namespace Insendlu
                     modified_at = DateTime.Now,
                     due_date = date,
                     user_id = (int)id,
-                    status = (int) TaskStatus.Assigned,
-                    task_document_id = taskDoc.id
+                    status = (int)TaskStatus.Assigned,
+                    task_document_id = taskDoc.id,
+                    number_of_days_left = numberOfDays
                 };
-               
-                myTasksList.Text = task.body;
 
+                myTasksList.Text = task.body;
                 var check = _projectService.SaveTask(task);
+
+                var taskComplete = new TaskCompletion { completion = numberOfDays.ToString(), task_id = (int)task.id };
+                _insedlu.TaskCompletions.Add(taskComplete);
+                _insedlu.SaveChanges();
+
+                stats = Status("Assigned");
+                var taskStatus = Convert.ToInt32(stats);
+                //var task = _insedlu.Tasks.Single(x => x.id == taskId);
+
+                task.status = taskStatus;
+                task.assigned_to = selectedUserId;
+
+                _insedlu.Entry(task).State = EntityState.Modified;
+                _insedlu.SaveChanges();
 
                 if (check == 1)
                 {
@@ -894,6 +1053,10 @@ namespace Insendlu
             SetTasks(_id);
         }
 
+        private int GetRemainingDays(DateTime duedate, DateTime todaysDate)
+        {
+            return Convert.ToInt32((duedate - todaysDate).TotalDays);
+        }
         protected void myTask_OnClick(object sender, EventArgs e)
         {
             var id = Convert.ToInt64(Session["ID"]);
@@ -1013,16 +1176,16 @@ namespace Insendlu
 
         protected void Timer1_OnTick(object sender, EventArgs e)
         {
-            SetUpSlide();
+            //SetUpSlide();
         }
 
-        private void SetUpSlide()
-        {
-            var rand = new Random();
-            var next = rand.Next(1, 8);
+        //private void SetUpSlide()
+        //{
+        //    var rand = new Random();
+        //    var next = rand.Next(1, 8);
 
-            imageSlide.ImageUrl = "~/Images/Slideshow/" + next.ToString() + ".png";
-        }
+        //    imageSlide.ImageUrl = "~/Images/Slideshow/" + next.ToString() + ".png";
+        //}
 
         protected void assignTask_OnClick(object sender, EventArgs e)
         {
@@ -1031,24 +1194,24 @@ namespace Insendlu
             if (userList.SelectedValue == null)
             {
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "alert", "alert('Please select User to assign to')", true);
-                
+
             }
             if (tasks.SelectedValue == null)
             {
                 Page.ClientScript.RegisterClientScriptBlock(GetType(), "alert", "alert('Please select task to assign')", true);
-                
+
             }
 
             var selectedUserId = Convert.ToInt32(userList.SelectedValue);
             var taskId = Convert.ToInt32(tasks.SelectedValue);
-            
+
             stats = Status("Assigned");
             var taskStatus = Convert.ToInt32(stats);
             var task = _insedlu.Tasks.Single(x => x.id == taskId);
             var assignee = _projectService.GetUserById(selectedUserId);
             var assigner = _projectService.GetUserById(Convert.ToInt32(_id));
             var dueOnDate = task.due_date;
-            
+
             task.status = taskStatus;
             task.assigned_to = selectedUserId;
 
@@ -1082,7 +1245,15 @@ namespace Insendlu
 
             return defaultStatus;
         }
-        protected void changeStatus_OnClick(object sender, EventArgs e)
+        private bool CheckPreviousDate(string dueDateCheck)
+        {
+            //var dt1 = Convert.ToDateTime(dueDateCheck);
+            //var dt2 = DateTime.Now;
+
+            //return dt1 < dt2;
+            return true;
+        }
+        protected void changeStatusUpdate_OnClick(object sender, EventArgs e)
         {
             var stats = 0;
             var selected = String.Empty;
@@ -1106,6 +1277,11 @@ namespace Insendlu
 
             SetTasks(_id);
         }
-       
+
+        protected void completedTasks_OnPreRender(object sender, EventArgs e)
+        {
+            var id = Convert.ToInt64(Session["ID"]);
+            SetTasks(id);
+        }
     }
 }

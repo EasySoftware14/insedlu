@@ -54,7 +54,7 @@
 
 <body class="no-skin">
     <div id="navbar" class="navbar navbar-default          ace-save-state">
-        <div class="navbar-container ace-save-state" id="navbar-container">
+    <div class="navbar-container ace-save-state" id="navbar-container">
             <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
                 <span class="sr-only">Toggle sidebar</span>
 
@@ -518,13 +518,13 @@
                     <ul class="submenu">
                         <li class="divider"></li>
                         <li class="text-center">
-                            <a href="#">Insedlu BCC</a>
+                            <a href="InsedluBcc.aspx">Insedlu BCC</a>
 
                             <b class="arrow"></b>
                         </li>
                         <li class="divider"></li>
                         <li class="text-center">
-                            <a href="#">Task Calender</a>
+                            <a href="TaskCalender.aspx">Task Calender</a>
 
                             <b class="arrow"></b>
                         </li>
@@ -849,7 +849,19 @@
                 //window.location.replace("index.aspx");
 
             });
+            var d = new Date();
+            var month = d.getMonth() + 1;
+            var day = d.getDate();
 
+            var output = d.getFullYear() + '/' +
+                (('' + month).length < 2 ? '0' : '') + month + '/' +
+                (('' + day).length < 2 ? '0' : '') + day;
+        
+            $("#date").datepicker({
+                dateFormat: 'dd/mm/yy',
+                minDate:"0"
+               
+            });
 
             $('#showContainer').click(function () {
                 $('#containerShow').show();
@@ -1185,7 +1197,21 @@
                     'width': 140
                 }
             });
-
+            $('#assetUpdate').click(function() {
+                $('#assetPanel').show();
+                $('#membersPanel').hide();
+                $('#documentsPanel').hide();
+            });
+            $('#updateMembers').click(function () {
+                $('#membersPanel').show();
+                $('#assetPanel').hide();
+                $('#documentsPanel').hide();
+            });
+            $('#documentUpate').click(function () {
+                $('#documentsPanel').show();
+                $('#assetPanel').hide();
+                $('#membersPanel').hide();
+            });
 
 
             //custom date editable
@@ -1201,7 +1227,7 @@
                     //,format: 'yyyy-mm-dd',
                     //viewformat: 'yyyy-mm-dd'
                 }
-            })
+            });
 
             $('#age').editable({
                 type: 'spinner',

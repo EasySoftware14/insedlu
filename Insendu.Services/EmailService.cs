@@ -78,9 +78,9 @@ namespace Insendu.Services
             var appConfig = ConfigurationManager.AppSettings["email_templates_path"];
 
             var siteUrl = ConfigurationManager.AppSettings["live_website_url"];
-            var footerImage = string.Format("{0}Images/insedluLog.png", siteUrl);
-            var link = string.Format("<a href={0}resetpassword.aspx?temppass={1}>create</a>", siteUrl, tempPass);
-            var path = string.Format("{0}emailtemplate.txt", appConfig);
+            var footerImage = $"{siteUrl}Images/insedluLog.png";
+            var link = $"<a href={siteUrl}resetpassword.aspx?temppass={tempPass}>create</a>";
+            //var path = string.Format("{0}emailtemplate.txt", appConfig);
             var template = string.Empty;
 
             using (var reader = new StreamReader(tempPath))

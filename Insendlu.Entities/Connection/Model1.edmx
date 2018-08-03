@@ -137,6 +137,17 @@
           <Property Name="modified_at" Type="datetime" />
           <Property Name="proj_id" Type="int" />
         </EntityType>
+        <EntityType Name="ContigencyFees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="project_id" Type="int" />
+          <Property Name="worklog_id" Type="int" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="end_date" Type="date" />
+          <Property Name="total_cost" Type="int" />
+        </EntityType>
         <EntityType Name="CoverpageStandard">
           <Key>
             <PropertyRef Name="id" />
@@ -156,6 +167,18 @@
           <Property Name="position" Type="nvarchar" MaxLength="100" />
           <Property Name="responsibilities" Type="nvarchar(max)" />
           <Property Name="qualification" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="DataAnalyst">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="employee" Type="nvarchar" MaxLength="150" />
+          <Property Name="project_id" Type="int" />
+          <Property Name="total_cost" Type="int" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="end_date" Type="date" />
+          <Property Name="worklog_id" Type="int" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
@@ -240,9 +263,24 @@
           <Property Name="duration" Type="int" />
           <Property Name="created_at" Type="datetime" />
           <Property Name="modified_at" Type="datetime" />
-          <Property Name="logger" Type="int" />
           <Property Name="project_id" Type="int" />
           <Property Name="duration_type_id" Type="int" />
+          <Property Name="members" Type="nvarchar" MaxLength="150" />
+          <Property Name="non_system_user" Type="nvarchar" MaxLength="250" />
+          <Property Name="duties" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Logistics">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="details" Type="nvarchar" MaxLength="250" />
+          <Property Name="unit_cost" Type="int" />
+          <Property Name="total_cost" Type="int" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="end_date" Type="date" />
+          <Property Name="worklog_id" Type="int" Nullable="false" />
+          <Property Name="project_id" Type="int" />
         </EntityType>
         <EntityType Name="Message">
           <Key>
@@ -416,6 +454,17 @@
           <Property Name="content" Type="nvarchar(max)" />
           <Property Name="created_at" Type="datetime" />
           <Property Name="modified_at" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ProjectManagementFees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="project_id" Type="int" />
+          <Property Name="worklog_id" Type="int" />
+          <Property Name="end_date" Type="date" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="total_cost" Type="int" />
         </EntityType>
         <EntityType Name="ProjectMethodology">
           <Key>
@@ -611,6 +660,30 @@
           <Property Name="modified_at" Type="datetime" />
           <Property Name="status" Type="int" />
         </EntityType>
+        <EntityType Name="SurveyMonkey">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="project_id" Type="int" />
+          <Property Name="worklog_id" Type="int" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="end_date" Type="date" />
+          <Property Name="total_cost" Type="int" />
+        </EntityType>
+        <EntityType Name="SustenenceFees">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="project_id" Type="int" />
+          <Property Name="worklog_id" Type="int" />
+          <Property Name="start_date" Type="date" />
+          <Property Name="end_date" Type="date" />
+          <Property Name="detail" Type="nvarchar" MaxLength="150" />
+          <Property Name="unit_cost" Type="int" />
+          <Property Name="total_cost" Type="int" />
+        </EntityType>
         <EntityType Name="Task">
           <Key>
             <PropertyRef Name="id" />
@@ -624,6 +697,15 @@
           <Property Name="task_document_id" Type="int" />
           <Property Name="assigned_to" Type="int" />
           <Property Name="due_date" Type="date" />
+          <Property Name="number_of_days_left" Type="int" />
+        </EntityType>
+        <EntityType Name="TaskCompletion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="task_id" Type="int" />
+          <Property Name="completion" Type="nvarchar" MaxLength="5" />
         </EntityType>
         <EntityType Name="TaskDocument">
           <Key>
@@ -795,8 +877,10 @@
           <EntitySet Name="ConclusionStandard" EntityType="Self.ConclusionStandard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ConfidentialityStatement" EntityType="Self.ConfidentialityStatement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Consultancy" EntityType="Self.Consultancy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContigencyFees" EntityType="Self.ContigencyFees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CoverpageStandard" EntityType="Self.CoverpageStandard" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CVS" EntityType="Self.CVS" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataAnalyst" EntityType="Self.DataAnalyst" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DevelopmentPlans" EntityType="Self.DevelopmentPlans" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DocumentType" EntityType="Self.DocumentType" Schema="dbo" store:Type="Tables" />
@@ -806,6 +890,7 @@
           <EntitySet Name="FieldWorkStatistics" EntityType="Self.FieldWorkStatistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FieldWorkType" EntityType="Self.FieldWorkType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Logging" EntityType="Self.Logging" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Logistics" EntityType="Self.Logistics" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MyStory" EntityType="Self.MyStory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
@@ -819,6 +904,7 @@
           <EntitySet Name="ProjectEnvelop" EntityType="Self.ProjectEnvelop" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectImplementationTime" EntityType="Self.ProjectImplementationTime" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="projectJVCompany" EntityType="Self.projectJVCompany" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectManagementFees" EntityType="Self.ProjectManagementFees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectMethodology" EntityType="Self.ProjectMethodology" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectParameter" EntityType="Self.ProjectParameter" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProjectPolicy" EntityType="Self.ProjectPolicy" Schema="dbo" store:Type="Tables" />
@@ -837,7 +923,10 @@
           <EntitySet Name="RiskAnalysis" EntityType="Self.RiskAnalysis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sector" EntityType="Self.Sector" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SmallProject" EntityType="Self.SmallProject" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SurveyMonkey" EntityType="Self.SurveyMonkey" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SustenenceFees" EntityType="Self.SustenenceFees" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskCompletion" EntityType="Self.TaskCompletion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaskDocument" EntityType="Self.TaskDocument" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Telephone" EntityType="Self.Telephone" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Upload" EntityType="Self.Upload" Schema="dbo" store:Type="Tables" />
@@ -1091,6 +1180,13 @@
           <EntitySet Name="WhyChooseStandards" EntityType="InsendluModel.WhyChooseStandard" />
           <EntitySet Name="ConclusionStandards" EntityType="InsendluModel.ConclusionStandard" />
           <EntitySet Name="TaskDocuments" EntityType="InsendluModel.TaskDocument" />
+          <EntitySet Name="TaskCompletions" EntityType="InsendluModel.TaskCompletion" />
+          <EntitySet Name="ContigencyFees" EntityType="InsendluModel.ContigencyFee" />
+          <EntitySet Name="DataAnalysts" EntityType="InsendluModel.DataAnalyst" />
+          <EntitySet Name="Logistics" EntityType="InsendluModel.Logistic" />
+          <EntitySet Name="ProjectManagementFees" EntityType="InsendluModel.ProjectManagementFee" />
+          <EntitySet Name="SurveyMonkeys" EntityType="InsendluModel.SurveyMonkey" />
+          <EntitySet Name="SustenenceFees" EntityType="InsendluModel.SustenenceFee" />
         </EntityContainer>
         <EntityType Name="ProjectMethodology">
           <Key>
@@ -1205,6 +1301,7 @@
           <Property Name="status" Type="Int32" />
           <Property Name="assigned_to" Type="Int32" />
           <Property Name="due_date" Type="DateTime" Precision="0" />
+          <Property Name="number_of_days_left" Type="Int32" />
         </EntityType>
         <EntityType Name="UserProfile">
           <Key>
@@ -1501,9 +1598,11 @@
           <Property Name="duration" Type="Int32" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="modified_at" Type="DateTime" Precision="3" />
-          <Property Name="logger" Type="Int32" />
           <Property Name="project_id" Type="Int32" />
           <Property Name="duration_type_id" Type="Int32" />
+          <Property Name="members" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="non_system_user" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="duties" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="SmallProject">
           <Key>
@@ -1702,6 +1801,85 @@
           <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="file" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TaskCompletion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="task_id" Type="Int32" />
+          <Property Name="completion" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ContigencyFee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="project_id" Type="Int32" />
+          <Property Name="worklog_id" Type="Int32" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="total_cost" Type="Int32" />
+        </EntityType>
+        <EntityType Name="DataAnalyst">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="employee" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="project_id" Type="Int32" />
+          <Property Name="total_cost" Type="Int32" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="worklog_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Logistic">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="details" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="unit_cost" Type="Int32" />
+          <Property Name="total_cost" Type="Int32" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="worklog_id" Type="Int32" Nullable="false" />
+          <Property Name="project_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ProjectManagementFee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="project_id" Type="Int32" />
+          <Property Name="worklog_id" Type="Int32" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="total_cost" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SurveyMonkey">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="project_id" Type="Int32" />
+          <Property Name="worklog_id" Type="Int32" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="total_cost" Type="Int32" />
+        </EntityType>
+        <EntityType Name="SustenenceFee">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="project_id" Type="Int32" />
+          <Property Name="worklog_id" Type="Int32" />
+          <Property Name="start_date" Type="DateTime" Precision="0" />
+          <Property Name="end_date" Type="DateTime" Precision="0" />
+          <Property Name="detail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="unit_cost" Type="Int32" />
+          <Property Name="total_cost" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1994,6 +2172,7 @@
           <EntitySetMapping Name="Tasks">
             <EntityTypeMapping TypeName="InsendluModel.Task">
               <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="number_of_days_left" ColumnName="number_of_days_left" />
                 <ScalarProperty Name="due_date" ColumnName="due_date" />
                 <ScalarProperty Name="assigned_to" ColumnName="assigned_to" />
                 <ScalarProperty Name="status" ColumnName="status" />
@@ -2320,9 +2499,11 @@
           <EntitySetMapping Name="Loggings">
             <EntityTypeMapping TypeName="InsendluModel.Logging">
               <MappingFragment StoreEntitySet="Logging">
+                <ScalarProperty Name="duties" ColumnName="duties" />
+                <ScalarProperty Name="non_system_user" ColumnName="non_system_user" />
+                <ScalarProperty Name="members" ColumnName="members" />
                 <ScalarProperty Name="duration_type_id" ColumnName="duration_type_id" />
                 <ScalarProperty Name="project_id" ColumnName="project_id" />
-                <ScalarProperty Name="logger" ColumnName="logger" />
                 <ScalarProperty Name="modified_at" ColumnName="modified_at" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="duration" ColumnName="duration" />
@@ -2547,6 +2728,92 @@
                 <ScalarProperty Name="file" ColumnName="file" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskCompletions">
+            <EntityTypeMapping TypeName="InsendluModel.TaskCompletion">
+              <MappingFragment StoreEntitySet="TaskCompletion">
+                <ScalarProperty Name="completion" ColumnName="completion" />
+                <ScalarProperty Name="task_id" ColumnName="task_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContigencyFees">
+            <EntityTypeMapping TypeName="InsendluModel.ContigencyFee">
+              <MappingFragment StoreEntitySet="ContigencyFees">
+                <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataAnalysts">
+            <EntityTypeMapping TypeName="InsendluModel.DataAnalyst">
+              <MappingFragment StoreEntitySet="DataAnalyst">
+                <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="employee" ColumnName="employee" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logistics">
+            <EntityTypeMapping TypeName="InsendluModel.Logistic">
+              <MappingFragment StoreEntitySet="Logistics">
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+                <ScalarProperty Name="unit_cost" ColumnName="unit_cost" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectManagementFees">
+            <EntityTypeMapping TypeName="InsendluModel.ProjectManagementFee">
+              <MappingFragment StoreEntitySet="ProjectManagementFees">
+                <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SurveyMonkeys">
+            <EntityTypeMapping TypeName="InsendluModel.SurveyMonkey">
+              <MappingFragment StoreEntitySet="SurveyMonkey">
+                <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SustenenceFees">
+            <EntityTypeMapping TypeName="InsendluModel.SustenenceFee">
+              <MappingFragment StoreEntitySet="SustenenceFees">
+                <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+                <ScalarProperty Name="unit_cost" ColumnName="unit_cost" />
+                <ScalarProperty Name="detail" ColumnName="detail" />
+                <ScalarProperty Name="end_date" ColumnName="end_date" />
+                <ScalarProperty Name="start_date" ColumnName="start_date" />
+                <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+                <ScalarProperty Name="project_id" ColumnName="project_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

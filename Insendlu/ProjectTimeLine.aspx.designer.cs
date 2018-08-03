@@ -13,6 +13,15 @@ namespace Insendlu {
     public partial class ProjectTimeLine {
         
         /// <summary>
+        /// backToTrack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button backToTrack;
+        
+        /// <summary>
         /// timeline control.
         /// </summary>
         /// <remarks>

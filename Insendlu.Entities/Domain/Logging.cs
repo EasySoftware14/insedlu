@@ -18,7 +18,9 @@ public partial class Logging
     public Nullable<int> duration { get; set; }
     public Nullable<System.DateTime> created_at { get; set; }
     public Nullable<System.DateTime> modified_at { get; set; }
-    public Nullable<int> logger { get; set; }
     public Nullable<int> project_id { get; set; }
     public Nullable<int> duration_type_id { get; set; }
+    public string members { get; set; }
+    public string non_system_user { get; set; }
+    public string duties { get; set; }
 }

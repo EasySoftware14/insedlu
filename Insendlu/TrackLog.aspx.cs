@@ -19,6 +19,7 @@ namespace Insendlu
         private int _userId;
         private int _projectId;
         private int _smallProjectId;
+        private string _supervisor = String.Empty;
 
         public TrackLog()
         {
@@ -32,8 +33,6 @@ namespace Insendlu
             {
                 var department = Session["department"];
                 var duration = Session["duration"];
-                var supervisor = Session["supervisor"];
-                 _userId = Convert.ToInt32(Request.QueryString["usId"]);
 
                 _projectId = Convert.ToInt32(Request.QueryString["projId"]);
                 var projLogging = _projectService.GetWorkLogByName(Request.QueryString["name"]);
@@ -56,27 +55,35 @@ namespace Insendlu
 
                 department = projLogging.department;
                 duration = projLogging.duration + " " + durType;
-                supervisor = _projectService.GetUserById(_userId).name;
+                var members = projLogging.members.Split(',').ToList();
+                var userList = new List<string>();
 
-                //var test = Regex.Replace("This (is (a) (test.", "[()]", "");
-                logging.Visible = false;
+                foreach (var member in members)
+                {
+                    var user = _projectService.GetUserById(Convert.ToInt32(member));
+                    userList.Add(user.name);
+                }
+                _supervisor = string.Join(",", userList);
+                membersList.Text = _supervisor;
+                //supervisor = _projectService.GetUserById(_userId).name;
+
+                logging.Visible = true;
                 var name = Request.QueryString["name"];
                
                 var breaker = new Literal();
                 breaker.Text = "<br/>";
-                var buttonName = string.Format("Name : {0} \\n\\nDepartment : {1} \\n\\nDuration : {2} \\n\\nSupervisor : {3}", name.ToUpper(), department, duration, supervisor);
+                var buttonName = string.Format("Name : {0} \\n\\nDepartment : {1} \\n\\nDuration : {2} \\n\\nSupervisor : {3}", name.ToUpper(), department, duration, _supervisor);
 
                 projName.Text = name.ToUpper();
-                projectsummary.Text = string.Format("Name : {0} <br/>Department : {1} <br/>Duration : {2} <br/>Supervisor : {3}", name.ToUpper(), department, duration, supervisor); 
+                projectsummary.Text = string.Format("Name : {0} <br/>Department : {1} <br/>Duration : {2} <br/>Members : {3}", name.ToUpper(), department, duration, _supervisor); 
 
-                Page.ClientScript.RegisterClientScriptBlock(GetType(), "alert", "alert('" + buttonName + "')", true);
+                //Page.ClientScript.RegisterClientScriptBlock(GetType(), "alert", "alert('" + buttonName + "')", true);
 
             }
             else
             {
                 var department = Session["department"];
                 var duration = Session["duration"];
-                var supervisor = Session["supervisor"];
 
                 _projectId = Convert.ToInt32(Request.QueryString["projId"]);
                 var projLogging = _projectService.GetWorkLogByName(Request.QueryString["name"]);
@@ -96,10 +103,8 @@ namespace Insendlu
                         break;
 
                 }
-                _userId = Convert.ToInt32(Request.QueryString["usId"]);
                 department = projLogging.department;
                 duration = projLogging.duration + " " + durType;
-                supervisor = _projectService.GetUserById(_userId).name;
 
                 logging.Visible = true;
                 var name = Request.QueryString["name"];
@@ -107,7 +112,7 @@ namespace Insendlu
                
                 var breaker = new Literal();
                 breaker.Text = "<br/>";
-                var buttonName = string.Format("Name : {0} Department : {1} Duration : {2} Supervisor : {3}", name.ToUpper(), department, duration, supervisor);
+                var buttonName = string.Format("Name : {0} Department : {1} Duration : {2} Supervisor : {3}", name.ToUpper(), department, duration, _supervisor);
 
                 projName.Text = name.ToUpper();
 
@@ -133,7 +138,7 @@ namespace Insendlu
         {
             Response.ContentType = "Application/pdf";
             Response.AppendHeader("Content-Disposition", "attachment; filename=" + id + ".pdf");
-            Response.TransmitFile(Server.MapPath("~/PDF's/" + id + ".pdf"));
+            Response.TransmitFile(Server.MapPath("~/PDF/" + id + ".pdf"));
             Response.End();
         }
 
@@ -148,10 +153,12 @@ namespace Insendlu
 
             if (workLogger != null)
             {
-                var id = Convert.ToInt32(workLogger.logger);
-                var projectAdmin = _userService.GetUserById(id);
+                membersList.Text = _supervisor;
+                ModalPopupExtender1.Show();
+                //var id = Convert.ToInt32(workLogger.members);
+                //var projectAdmin = _userService.GetUserById(id);
 
-                Response.Redirect("UserProfilesEdit.aspx?id=" + id);
+                //Response.Redirect("UserProfilesEdit.aspx?id=" + id);
             }
 
         }

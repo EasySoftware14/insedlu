@@ -12,7 +12,7 @@ using System.Web.UI.WebControls;
 using Insendlu.Entities;
 using Insendlu.Entities.Connection;
 //using Insendlu.Entities.Domain;
-using Insendlu.Entities.MySqlConnection;
+
 using Insendu.Services;
 using Font = iTextSharp.text.Font;
 using Rectangle = iTextSharp.text.Rectangle;
@@ -21,14 +21,12 @@ namespace Insendlu
 {
     public partial class ActiveProjects : Page
     {
-        private readonly InsendluEntities _mySqlInsedluEntities;
-        private readonly insedluEntities _insendluEntities;
+        private readonly InsendluEntities _insendluEntities;
         private readonly ProjectService _projectService;
       
         public ActiveProjects()
         {
-            _insendluEntities = new insedluEntities();
-            _mySqlInsedluEntities = new InsendluEntities();
+            _insendluEntities = new InsendluEntities();
             _projectService = new ProjectService();
            
         }
@@ -47,7 +45,7 @@ namespace Insendlu
 
         private void DataGridBind()
         {
-            var projects = (from proj in _insendluEntities.projects
+            var projects = (from proj in _insendluEntities.Projects
                            where proj.status != (int) ProjectStatus.Declined && proj.status != (int) ProjectStatus.Pending
                            select proj).ToList();
 
@@ -119,7 +117,7 @@ namespace Insendlu
 
                 Response.Redirect("ViewProposal.aspx?id=" + id);
 
-                var projects = (from proj in _insendluEntities.projects
+                var projects = (from proj in _insendluEntities.Projects
                                 where proj.id == id
                                 select proj).Single();
 
@@ -160,7 +158,7 @@ namespace Insendlu
             var label = (Label)row.FindControl("lblId");
             var id = Convert.ToInt32(label.Text);
 
-            var projects = (from proj in _insendluEntities.projects
+            var projects = (from proj in _insendluEntities.Projects
                             where proj.id == id
                             select proj).Single();
 
@@ -249,7 +247,7 @@ namespace Insendlu
             var label = (Label)row.FindControl("lblId");
             var id = Convert.ToInt32(label.Text);
 
-            var projects = (from proj in _insendluEntities.projects
+            var projects = (from proj in _insendluEntities.Projects
                             where proj.id == id
                             select proj).Single();
 
@@ -266,7 +264,7 @@ namespace Insendlu
         {
             Response.ContentType = "Application/pdf";
             Response.AppendHeader("Content-Disposition", "attachment; filename="+projName+".pdf");
-            Response.TransmitFile(Server.MapPath("~/PDF's/"+projName+".pdf"));
+            Response.TransmitFile(Server.MapPath("~/PDF/"+projName+".pdf"));
             Response.End();
         }
 
@@ -282,7 +280,7 @@ namespace Insendlu
 
             var r = new Rectangle(400, 300);
             var doc1 = new Document(r);
-            var path = Server.MapPath("PDF's");
+            var path = Server.MapPath("PDF");
            
             try
             {

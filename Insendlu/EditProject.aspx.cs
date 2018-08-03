@@ -14,7 +14,7 @@ using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Insendlu.Entities.Connection;
 ////using Insendlu.Entities.Domain;
-using Insendlu.Entities.MySqlConnection;
+
 using Insendu.Services;
 using SautinSoft.Document;
 using ListItem = System.Web.UI.WebControls.ListItem;
@@ -616,7 +616,7 @@ namespace Insendlu
         private void SaveProject(Project project)
         {
 
-            var path = Server.MapPath("PDF's");
+            var path = Server.MapPath("PDF");
             //_documentGeneratorService.UpdatePdf(project, path);
 
         }

@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using Insendlu.Entities.Connection;
-using Insendlu.Entities.MySqlConnection;
 using Insendu.Services;
 
 namespace Insendlu
@@ -16,7 +12,7 @@ namespace Insendlu
         private readonly ProjectService _projectService;
         private readonly UserService _userService;
         private string _name;
-        private int _userId;
+        private string _userId;
         private int _projectId;
 
         public TrackingWorkLog()
@@ -96,19 +92,26 @@ namespace Insendlu
             if (worklog == null)
             {
                 var smally = _projectService.GetSmallProjectLogByName(btn.Text);
-                if (smally.administrator != null) _userId = (int) smally.administrator;
+                if (smally.administrator != null) _userId =  smally.administrator.ToString();
 
             }
             else
             {
-                if (worklog.logger != null) _userId = (int) worklog.logger;
+                if (worklog.members != null) _userId = worklog.members;
                 _projectId = (int)_projectService.GetProjectById(Convert.ToInt64(worklog.project_id)).id;
             }
-            
-            var link = string.Format("TrackLog.aspx?name={0}&usId={1}&projId={2}", _name, _userId, _projectId);
-            Response.Redirect(link);
-
+            Session["ProjectId"] = _projectId;
+            Session["UserId"] = _userId;
+            ModalPopupExtender1.Show();
         }
+
+        private void TrackLogWork(string name, int projectId)
+        {
+            var link = $"TrackLog.aspx?name={name}&projId={projectId}";
+            Session["TrackWorkLog"] = link;
+            Response.Redirect(link);
+        }
+
         private string GetRandomClass(int counter)
         {
             if (counter % 2 == 0)
@@ -146,7 +149,7 @@ namespace Insendlu
 
             if (workLogger != null)
             {
-                var id = Convert.ToInt32(workLogger.logger);
+                var id = Convert.ToInt32(workLogger.members);
                 var projectAdmin = _userService.GetUserById(id);
 
                 Response.Redirect("UserProfilesEdit.aspx?id=" + id);
@@ -163,6 +166,20 @@ namespace Insendlu
         {
             var id = _projectId = Convert.ToInt32(Session["proId"]); ;
             Response.Redirect("LogInfo.aspx?id=" + id);
+        }
+
+        protected void btnUpdate_OnClick(object sender, EventArgs e)
+        {
+            Response.Redirect("Update.aspx");
+        }
+
+        protected void btnLogWork_OnClick(object sender, EventArgs e)
+        {
+            _name = Session["proName"].ToString();
+            _projectId = Convert.ToInt32(Session["ProjectId"]);
+            _userId = Session["UserId"].ToString();
+
+            TrackLogWork(_name, _projectId);
         }
     }
 }

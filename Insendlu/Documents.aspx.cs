@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 using AjaxControlToolkit;
 using Insendlu.Entities.Connection;
 //using Insendlu.Entities.Domain;
-using Insendlu.Entities.MySqlConnection;
+
 using Insendu.Services;
 
 namespace Insendlu
@@ -172,63 +172,13 @@ namespace Insendlu
 
         }
 
-        protected void datagridview_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void datagridview_PageIndexChanging(object sender, GridViewPageEventArgs e){}
+
+        protected void backToTrack_OnClick(object sender, EventArgs e)
         {
-            
-        }
+            var link = Session["TrackWorkLog"].ToString();
 
-        protected void attachDocs_OnClick(object sender, EventArgs e)
-        {
-             _proId = Convert.ToInt32(Request.QueryString["projId"]);
-             var projDocs = _projectService.ProjectDocuments(_proId).Select(x => x.name);
-
-            if (uploadDocs.HasFiles)
-            {
-                var files = uploadDocs.PostedFiles;
-                var count = 0;
-
-                foreach (var file in files)
-                {
-              
-                    if (!projDocs.Contains(file.FileName))
-                    {
-                        var fileName = Page.Server.MapPath("~/Uploads/ProjectDocs/" + Path.GetFileName(file.FileName));
-                        file.SaveAs(fileName);
-
-                        var fileByte = _imageService.ReadToEnd(file.InputStream);
-
-                        var projDoc = new ProjectDocument
-                        {
-                            created_at = DateTime.Now,
-                            modified_at = DateTime.Now,
-                            doc_type = file.ContentType,
-                            name = file.FileName,
-                            proj_id = _proId,
-                            file = fileByte
-
-                        };
-
-                        var check = _projectService.SaveProjectDocuments(projDoc);
-                        if (check == 1)
-                        {
-                            count++;
-                        }
-                    }
-                    else
-                    {
-                        Page.ClientScript.RegisterClientScriptBlock(GetType(), "alert", "alert('Document with the same name already exists !')", true);
-                        success.InnerText = "File already exists with the same name";
-                    }
-
-                    
-                  
-                }
-                success.InnerText = String.Format("{0} out of {1} document(s) uploaded successfully", count, files.Count);
-                Page.ClientScript.RegisterClientScriptBlock(GetType(), "alert", "alert(''" + count + "document (s) uploaded successfully)", true);
-            }
-            var projDocument = GetProjectDocuments(_proId);
-            datagridview.DataSource = projDocument;
-            datagridview.DataBind();
+            Response.Redirect(link);
         }
     }
 }

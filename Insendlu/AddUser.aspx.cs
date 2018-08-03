@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Insendlu.Entities;
 using Insendlu.Entities.Connection;
-using Insendlu.Entities.MySqlConnection;
+
 using Insendu.Services;
 
 namespace Insendlu

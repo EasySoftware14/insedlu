@@ -13,24 +13,6 @@ namespace Insendlu {
     public partial class Profile {
         
         /// <summary>
-        /// Timer1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.Timer Timer1;
-        
-        /// <summary>
-        /// imageSlide control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imageSlide;
-        
-        /// <summary>
         /// userSuccess control.
         /// </summary>
         /// <remarks>
@@ -67,6 +49,15 @@ namespace Insendlu {
         protected global::System.Web.UI.WebControls.TextBox myTasksList;
         
         /// <summary>
+        /// taskError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label taskError;
+        
+        /// <summary>
         /// tasks control.
         /// </summary>
         /// <remarks>
@@ -74,15 +65,6 @@ namespace Insendlu {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListBox tasks;
-        
-        /// <summary>
-        /// userList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox userList;
         
         /// <summary>
         /// assignTask control.
@@ -157,13 +139,22 @@ namespace Insendlu {
         protected global::System.Web.UI.WebControls.DropDownList statusDropdown;
         
         /// <summary>
-        /// changeStatus control.
+        /// noTask control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button changeStatus;
+        protected global::System.Web.UI.WebControls.Label noTask;
+        
+        /// <summary>
+        /// changeStatusUpdate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button changeStatusUpdate;
         
         /// <summary>
         /// completedTasks control.
@@ -200,6 +191,15 @@ namespace Insendlu {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload attachments;
+        
+        /// <summary>
+        /// userList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList userList;
         
         /// <summary>
         /// dueDate control.

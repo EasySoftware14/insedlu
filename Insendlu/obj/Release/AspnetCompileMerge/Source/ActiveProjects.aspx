@@ -1,7 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="Site.Master" CodeBehind="ActiveProjects.aspx.cs" Inherits="Insendlu.ActiveProjects" %>
 
-<%@ Register TagPrefix="cc1" Namespace="AjaxControlToolkit.HtmlEditor" Assembly="AjaxControlToolkit, Version=16.1.1.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e" %>
-
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
     <script type="text/javascript">
         $(document).ready(function () {

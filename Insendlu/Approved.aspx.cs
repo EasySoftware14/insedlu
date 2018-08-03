@@ -8,8 +8,6 @@ using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
 using Insendlu.Entities.Connection;
-//using Insendlu.Entities.Domain;
-using Insendlu.Entities.MySqlConnection;
 using Insendu.Services;
 
 namespace Insendlu
@@ -17,14 +15,14 @@ namespace Insendlu
     public partial class Approved : System.Web.UI.Page
     {
         private readonly ProjectService _projectService;
-        private readonly insedluEntities _insendluEntities;
+        private readonly InsendluEntities _insendluEntities;
         private readonly ImageService _imageService;
         private long _logId = 0;
 
         public Approved()
         {
             _projectService = new ProjectService();
-            _insendluEntities = new insedluEntities();
+            _insendluEntities = new InsendluEntities();
             _imageService = new ImageService();
         }
         protected void Page_Load(object sender, EventArgs e)
@@ -56,7 +54,7 @@ namespace Insendlu
         {
             var check = false;
 
-            var act = (from acts in _insendluEntities.worklogs
+            var act = (from acts in _insendluEntities.WorkLogs
                        where acts.proj_id == log
                        select acts).ToList();
 
@@ -69,15 +67,15 @@ namespace Insendlu
         }
         private string GetProjectName(long id)
         {
-            var proj = (from pro in _insendluEntities.projects
+            var proj = (from pro in _insendluEntities.Projects
                         where pro.id == id
                         select pro).SingleOrDefault();
 
             return proj.name;
         }
-        private List<projectdocument> GetProjectDocuments(long projId)
+        private List<ProjectDocument> GetProjectDocuments(long projId)
         {
-            var projectDoc = (from pro in _insendluEntities.projectdocuments
+            var projectDoc = (from pro in _insendluEntities.ProjectDocuments
                               where pro.proj_id == projId
                               select pro).ToList();
 
@@ -142,85 +140,85 @@ namespace Insendlu
 
                     if (employ)
                     {
-                        var activity = new activity
+                        var activity = new Activity
                         {
-                            assert_id = 1,
+                            asset_id = 1,
                             worklog_id = logId
                         };
 
-                        _insendluEntities.activities.Add(activity);
+                        _insendluEntities.Activities.Add(activity);
 
                         _insendluEntities.SaveChanges();
                     }
                     if (vehcle)
                     {
-                        var activity = new activity
+                        var activity = new Activity
                         {
-                            assert_id = 2,
+                            asset_id = 2,
                             worklog_id = logId
                         };
 
-                        _insendluEntities.activities.Add(activity);
+                        _insendluEntities.Activities.Add(activity);
 
                         _insendluEntities.SaveChanges();
                     }
                     if (accom)
                     {
-                        var activity = new activity
+                        var activity = new Activity
                         {
-                            assert_id = 3,
+                            asset_id = 3,
                             worklog_id = logId
                         };
 
-                        _insendluEntities.activities.Add(activity);
+                        _insendluEntities.Activities.Add(activity);
 
                         _insendluEntities.SaveChanges();
                     }
                     if (printing)
                     {
-                        var activity = new activity
+                        var activity = new Activity
                         {
-                            assert_id = 4,
+                            asset_id = 4,
                             worklog_id = logId
                         };
 
-                        _insendluEntities.activities.Add(activity);
+                        _insendluEntities.Activities.Add(activity);
 
                         _insendluEntities.SaveChanges();
                     }
                     if (refresh)
                     {
-                        var activity = new activity
+                        var activity = new Activity
                         {
-                            assert_id = 5,
+                            asset_id = 5,
                             worklog_id = logId
                         };
 
-                        _insendluEntities.activities.Add(activity);
+                        _insendluEntities.Activities.Add(activity);
 
                         _insendluEntities.SaveChanges();
                     }
                     if (tel)
                     {
-                        var activity = new activity
+                        var activity = new Activity
                         {
-                            assert_id = 6,
+                            asset_id = 6,
                             worklog_id = logId
                         };
 
-                        _insendluEntities.activities.Add(activity);
+                        _insendluEntities.Activities.Add(activity);
 
                         _insendluEntities.SaveChanges();
                     }
                     if (wifiData)
                     {
-                        var activity = new activity
+                        var activity = new Activity
                         {
-                            assert_id = 7,
+                            asset_id = 7,
                             worklog_id = logId
                         };
 
-                        _insendluEntities.activities.Add(activity);
+                        _insendluEntities.Activities.Add(activity);
 
                         _insendluEntities.SaveChanges();
                     }
@@ -244,7 +242,7 @@ namespace Insendlu
         {
             var chek = true;
 
-            var log = (from logs in _insendluEntities.worklogs
+            var log = (from logs in _insendluEntities.WorkLogs
                         where logs.proj_id == projId && logs.date_logged == date.Date
                         select logs).SingleOrDefault();
 
@@ -287,14 +285,14 @@ namespace Insendlu
             var label = (Label)row.FindControl("lblId");
             var id = Convert.ToInt32(label.Text);
 
-            var upload = (from up in _insendluEntities.projectdocuments
+            var upload = (from up in _insendluEntities.ProjectDocuments
                           where up.id == id
                           select up).Single();
 
             var docName = upload.name;
             Remove(docName);
 
-            _insendluEntities.projectdocuments.Remove(upload);
+            _insendluEntities.ProjectDocuments.Remove(upload);
             _insendluEntities.SaveChanges();
         }
 
@@ -313,7 +311,7 @@ namespace Insendlu
             var id = Convert.ToInt32(label.Text);
 
 
-            var upload = (from up in _insendluEntities.projectdocuments
+            var upload = (from up in _insendluEntities.ProjectDocuments
                           where up.id == id
                           select up).Single();
 

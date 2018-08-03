@@ -4,7 +4,8 @@
 
     <div class="container-fluid">
         <div class="row-fluid">
-            <h1 class="">Parameter Trace / Tracking</h1>
+            <br/>
+            <label style="font-size: x-large">Parameter Trace / Tracking</label>
             <hr />
             <h3></h3>
             <%-- <div class="col-md-12">
@@ -17,8 +18,14 @@
         </div>
         <br />
         <div class="row">
+            <div class="col-lg-12">
+                <asp:Button runat="server" ID="backToTrack" Text="Back to TrackWork" CssClass="btn btn-primary" OnClick="backToTrack_OnClick"/>
+                <br/>
+            </div>
+        </div>
+       <br/>
+        <div class="row">
             <div class="col-md-6">
-
                 <div class="panel-group">
                     <div class="panel panel-default" visible="True" id="panel" runat="server">
                         <a class="panel-default" data-toggle="collapse" data-parent="#accordion1" href="#collapseOne">
@@ -156,9 +163,7 @@
                         </a>
                         <div id="collapseTwo" class="panel-collapse collapse">
                             <div class="panel-body">
-                                <br />
                    
-                                <h3>Parameters</h3>
                                <table class="table table-hover">
                                    <tr>
                                        <th style="font-size: large">Variable</th>
@@ -217,6 +222,21 @@
                                             <asp:TextBox  required="required" runat="server" ReadOnly="True" ID="materialVariance" CssClass="form-control"></asp:TextBox></td>
                                     </tr>
 
+                                </table>
+                                <hr/>
+                                <table class="table table-hover">
+                                    <tr>
+                                        <th> All Totals</th>
+                                        <th> Projection Total Cost</th>
+                                        <th> Actual Total Cost</th>
+                                        <th> Variance Total Cost</th>
+                                    </tr>
+                                    <tr>
+                                        <td>Total</td>
+                                        <td><asp:Label runat="server" ID="lblProjTotal"></asp:Label></td>
+                                        <td><asp:Label runat="server" ID="lblActualCost"></asp:Label></td>
+                                        <td><asp:Label runat="server" ID="lblVariance"></asp:Label></td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>

@@ -6,17 +6,17 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Insendlu.Entities;
 using Insendlu.Entities.Connection;
-using Insendlu.Entities.MySqlConnection;
+
 
 namespace Insendlu
 {
     public partial class AllProjects : System.Web.UI.Page
     {
-        private readonly insedluEntities _insendluEntities;
+        private readonly InsendluEntities _insendluEntities;
 
         public AllProjects()
         {
-            _insendluEntities = new insedluEntities();
+            _insendluEntities = new InsendluEntities();
         }
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,7 +28,7 @@ namespace Insendlu
 
         private void DataBindBind()
         {
-            var projects = (from proj in _insendluEntities.projects
+            var projects = (from proj in _insendluEntities.Projects
                            select proj).ToList();
 
             if (projects.Count != 0)
@@ -54,7 +54,7 @@ namespace Insendlu
                 var label = (Label)row.FindControl("lblId");
                 var id = Convert.ToInt32(label.Text);
 
-                var projects = (from proj in _insendluEntities.projects
+                var projects = (from proj in _insendluEntities.Projects
                                 where proj.id == id
                                 select proj).Single();
 
@@ -79,7 +79,7 @@ namespace Insendlu
             var label = (Label)row.FindControl("lblId");
             var id = Convert.ToInt32(label.Text);
 
-            var projects = (from proj in _insendluEntities.projects
+            var projects = (from proj in _insendluEntities.Projects
                             where proj.id == id
                             select proj).Single();
 

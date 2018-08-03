@@ -15,7 +15,7 @@ using Insendlu.Entities.Connection;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 ////using Insendlu.Entities.Domain;
-using Insendlu.Entities.MySqlConnection;
+
 using Insendu.Services;
 using ListItem = System.Web.UI.WebControls.ListItem;
 
@@ -120,27 +120,31 @@ namespace Insendlu
         private void LoadCompany()
         {
             var company = _projectService.GetCompanyBackground();
-                
-            missionStatement.Text = company.mission_statement;
-            backgroundStatement.Text = company.background;
-
-            var services = company.service_offering.Split(',');
-            List<ListItem> items = new List<ListItem>(); 
-
-            foreach (var s in services)
+            if (company != null)
             {
-                serviceOffering.Items.Add(s);
-            }
-            foreach (var item in serviceOffering.Items)
-            {
-                var selected = (ListItem) item;
-                selected.Selected = true;
+                missionStatement.Text = company.mission_statement;
+                backgroundStatement.Text = company.background;
 
-                items.Add(selected);
+                var services = company.service_offering.Split(',');
+                List<ListItem> items = new List<ListItem>();
+
+                foreach (var s in services)
+                {
+                    serviceOffering.Items.Add(s);
+                }
+                foreach (var item in serviceOffering.Items)
+                {
+                    var selected = (ListItem)item;
+                    selected.Selected = true;
+
+                    items.Add(selected);
+                }
+
+                serviceOffering.Items.Clear();
+                serviceOffering.Items.AddRange(items.ToArray());
             }
 
-            serviceOffering.Items.Clear();
-            serviceOffering.Items.AddRange(items.ToArray());
+            
         }
         private void LoadConfidentialityStatement()
         {
@@ -538,7 +542,7 @@ namespace Insendlu
         }
         private void SaveProject(Project project)
         {
-            var path = Server.MapPath("PDF's");
+            var path = Server.MapPath("PDF");
 
             if (!File.Exists(path + "/"  + project.id + "," + project.name + ".pdf"))
             {

@@ -13,6 +13,15 @@ namespace Insendlu {
     public partial class Parameter {
         
         /// <summary>
+        /// backToTrack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button backToTrack;
+        
+        /// <summary>
         /// panel control.
         /// </summary>
         /// <remarks>
@@ -299,5 +308,32 @@ namespace Insendlu {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox materialVariance;
+        
+        /// <summary>
+        /// lblProjTotal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProjTotal;
+        
+        /// <summary>
+        /// lblActualCost control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblActualCost;
+        
+        /// <summary>
+        /// lblVariance control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblVariance;
     }
 }

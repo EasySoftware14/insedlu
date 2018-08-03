@@ -21,4 +21,5 @@ public partial class Task
     public Nullable<int> status { get; set; }
     public Nullable<int> assigned_to { get; set; }
     public Nullable<System.DateTime> due_date { get; set; }
+    public Nullable<int> number_of_days_left { get; set; }
 }

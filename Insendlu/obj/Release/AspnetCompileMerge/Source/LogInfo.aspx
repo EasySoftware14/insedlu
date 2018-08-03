@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <br />
-            <h1 class="">Log Work For - <span class="label-important" style="text-align: center">Project Variables</span></h1>
+            <label><span class="" style="font-size: xx-large"> Project Variables</span></label>
             <hr />
         </div>
         <br />

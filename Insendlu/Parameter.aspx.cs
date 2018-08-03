@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 using ikvm.extensions;
 using Insendlu.Entities.Connection;
 //using Insendlu.Entities.Domain;
-using Insendlu.Entities.MySqlConnection;
+
 using Insendu.Services;
 using java.lang;
 
@@ -38,29 +38,39 @@ namespace Insendlu
 
                 if (_projectService.GetProjectProjectionById((int) _projId))
                 {
+                    var projectionTotal = 0;
+
                     var projProjection = _projectService.GetProjectProjection(_projId);
+                    projectionTotal += Convert.ToInt32(projProjection.accomodation);
                     accommodation.Text = projProjection.accomodation;
                     accProjCost.Text = "R " + projProjection.accomodation;
 
                     telephone.Text = projProjection.telephone;
+                    projectionTotal += Convert.ToInt32(projProjection.telephone);
                     telProjCost.Text = "R " + projProjection.telephone;
 
                     vehicle.Text = projProjection.vehicle;
+                    projectionTotal += Convert.ToInt32(projProjection.telephone);
                     vProjecCost.Text = "R " + projProjection.vehicle;
 
                     material.Text = projProjection.print_material;
+                    projectionTotal += Convert.ToInt32(projProjection.print_material);
                     printProjCost.Text = "R " + projProjection.print_material;
 
                     employees.Text = projProjection.employees;
+                    projectionTotal += Convert.ToInt32(projProjection.employees);
                     empProjecCost.Text = "R " + projProjection.employees;
 
                     refreshment.Text = projProjection.refreshments;
+                    projectionTotal += Convert.ToInt32(projProjection.refreshments);
                     refreshProjCost.Text = "R " + projProjection.refreshments;
 
                     fieldwork.Text = projProjection.wifi_data;
+                    projectionTotal += Convert.ToInt32(projProjection.wifi_data);
                     wifiProjCost.Text = "R " + projProjection.wifi_data;
 
                     MakeReadOnly();
+                    lblProjTotal.Text = "R " + projectionTotal;
                     SetUpParameters(_projId);
                 }
                 
@@ -102,12 +112,14 @@ namespace Insendlu
             var wifiTotalCost = 0;
             var refreshTotalCost = 0;
 
+            var totalVariance = 0;
+
             var refreshCost = (from refrsh in _insedlu.Refreshments
                 where refrsh.project_id == projId
                 select refrsh).ToList();
 
             refreshTotalCost = GetTotalCosts(refreshCost);
-            SetupRefreshment(refreshTotalCost);
+            totalVariance += SetupRefreshment(refreshTotalCost);
            
 
             var accomCosts = (from accom in _insedlu.Accommodations
@@ -115,45 +127,49 @@ namespace Insendlu
                 select accom).ToList();
 
             accomoTotalCost = GetTotalCosts(accomCosts);
-            SetUpAccommodation(accomoTotalCost);
+            totalVariance += SetUpAccommodation(accomoTotalCost);
 
             var wifiCost = (from field in _insedlu.Wifis
                             where field.project_id == projId
                             select field).ToList();
 
             wifiTotalCost = GetTotalCosts(wifiCost);
-            SetUpWifi(wifiTotalCost);
+            totalVariance += SetUpWifi(wifiTotalCost);
 
             var vehicleCost = (from field in _insedlu.Vehicles
                             where field.project_id == projId
                             select field).ToList();
 
             vehiTotalCost = GetTotalCosts(vehicleCost);
-            SetUpVehicle(vehiTotalCost);
+            totalVariance += SetUpVehicle(vehiTotalCost);
 
             var telephoneCost = (from field in _insedlu.Telephones
                                where field.project_id == projId
                                select field).ToList();
 
             telTotalCost = GetTotalCosts(telephoneCost);
-            SetUpTelephone(telTotalCost);
+            totalVariance += SetUpTelephone(telTotalCost);
 
             var matPrintMatCost = (from field in _insedlu.PrintMaterials
                                  where field.project_id == projId
                                  select field).ToList();
 
             matTotalCost = GetTotalCosts(matPrintMatCost);
-            SetUpMaterial(matTotalCost);
+            totalVariance += SetUpMaterial(matTotalCost);
 
             var employeeCost = (from field in _insedlu.Employees
                                    where field.project_id == projId
                                    select field).ToList();
 
             emplTotalCost = GetTotalCosts(employeeCost);
-            SetUpEmployee(emplTotalCost);
+            totalVariance += SetUpEmployee(emplTotalCost);
+
+            lblActualCost.Text = "R " + (accomoTotalCost + vehiTotalCost + telTotalCost + matTotalCost + emplTotalCost + wifiTotalCost +
+                                 refreshTotalCost).toString();
+            lblVariance.Text = "R " + totalVariance.toString();
         }
 
-        private void SetUpEmployee(int emplTotalCost)
+        private int SetUpEmployee(int emplTotalCost)
         {
             employeeTotalCost.Text = "R " + emplTotalCost.ToString();
             var empVariance = (Convert.ToInt32(employees.Text) - emplTotalCost);
@@ -168,108 +184,122 @@ namespace Insendlu
                 employeeVariance.Text = "R " + empVariance.ToString();
                 employeeVariance.ForeColor = Color.Blue;
             }
+
+            return empVariance;
         }
 
-        private void SetUpMaterial(int matTotalCost)
+        private int SetUpMaterial(int matTotalCost)
         {
             materialTotalCost.Text = "R " + matTotalCost.ToString();
             var matVariance = (Convert.ToInt32(material.Text) - matTotalCost);
 
             if (matVariance < 0)
             {
-                telVariance.Text = "R " + matVariance.ToString();
-                telVariance.ForeColor = Color.Red;
+                printVariance.Text = "R " + matVariance.ToString();
+                printVariance.ForeColor = Color.Red;
             }
             else
             {
-                telVariance.Text = "R " + matVariance.ToString();
-                telVariance.ForeColor = Color.Blue;
+                printVariance.Text = "R " + matVariance.ToString();
+                printVariance.ForeColor = Color.Blue;
             }
+
+            return matVariance;
         }
 
-        private void SetUpTelephone(int telephoneCost)
+        private int SetUpTelephone(int telephoneCost)
         {
-            telephoneTotalCost.Text = "R " + telephoneCost.ToString();
+            telephoneTotalCost.Text = "R " + telephoneCost;
             var teleVariance = (Convert.ToInt32(telephone.Text) - telephoneCost);
 
             if (teleVariance < 0)
             {
-                telVariance.Text = "R " + teleVariance.ToString();
+                telVariance.Text = "R " + teleVariance;
                 telVariance.ForeColor = Color.Red;
             }
             else
             {
-                telVariance.Text = "R " + teleVariance.ToString();
+                telVariance.Text = "R " + teleVariance;
                 telVariance.ForeColor = Color.Blue;
             }
+
+            return teleVariance;
         }
 
-        private void SetUpVehicle(int vehiTotalCost)
+        private int SetUpVehicle(int vehiTotalCost)
         {
-            vehicleTotalCost.Text = "R " + vehiTotalCost.ToString();
+            vehicleTotalCost.Text = "R " + vehiTotalCost;
             var vehiVariance = (Convert.ToInt32(vehicle.Text) - vehiTotalCost);
 
             if (vehiVariance < 0)
             {
-                vehicleVariance.Text = "R " + vehiVariance.ToString();
+                vehicleVariance.Text = "R " + vehiVariance;
                 vehicleVariance.ForeColor = Color.Red;
             }
             else
             {
-                vehicleVariance.Text = "R " + vehiVariance.ToString();
+                vehicleVariance.Text = "R " + vehiVariance;
                 vehicleVariance.ForeColor = Color.Blue;
             }
+
+            return vehiVariance;
         }
 
-        private void SetUpWifi(int wifiTotalCost)
+        private int SetUpWifi(int wifiTotalCost)
         {
-            materialTotalCost.Text = "R " + wifiTotalCost.ToString();
+            materialTotalCost.Text = "R " + wifiTotalCost;
             var wifiVariance = (Convert.ToInt32(material.Text) - wifiTotalCost);
 
             if (wifiVariance < 0)
             {
-                materialVariance.Text = "R " + wifiVariance.ToString();
+                materialVariance.Text = "R " + wifiVariance;
                 materialVariance.ForeColor = Color.Red;
             }
             else
             {
-                materialVariance.Text = "R " + wifiVariance.ToString();
+                materialVariance.Text = "R " + wifiVariance;
                 materialVariance.ForeColor = Color.Blue;
             }
+
+            return wifiVariance;
         }
 
-        private void SetUpAccommodation(int accomoTotalCost)
+        private int SetUpAccommodation(int accomoTotalCost)
         {
-            accomTotalCost.Text = "R " + accomoTotalCost.ToString();
+            accomTotalCost.Text = "R " + accomoTotalCost;
             var varianceAccom = (Convert.ToInt32(accommodation.Text) - accomoTotalCost);
 
             if (varianceAccom < 0)
             {
-                accomVariance.Text = "R " + varianceAccom.ToString();
+                accomVariance.Text = "R " + varianceAccom;
                 accomVariance.ForeColor = Color.Red;
             }
             else
             {
-                accomVariance.Text = "R " + varianceAccom.ToString();
+                accomVariance.Text = "R " + varianceAccom;
                 accomVariance.ForeColor = Color.Blue;
             }
+
+            return varianceAccom;
         }
 
-        private void SetupRefreshment(int refreshTotalCost)
+        private int SetupRefreshment(int refreshTotalCost)
         {
             refreshmentCost.Text = "R " + refreshTotalCost.toString();
             var varianceRefresh = (Convert.ToInt32(refreshment.Text) - refreshTotalCost);
 
             if (varianceRefresh < 0)
             {
-                refreshVariance.Text = "R " + varianceRefresh.ToString();
+                refreshVariance.Text = "R " + varianceRefresh;
                 refreshVariance.ForeColor = Color.Red;
             }
             else
             {
-                refreshVariance.Text = "R " + varianceRefresh.ToString();
+                refreshVariance.Text = "R " + varianceRefresh;
                 refreshVariance.ForeColor = Color.Blue;
             }
+
+            return varianceRefresh;
         }
 
         private int GetTotalCosts<T>(List<T> obj) where T : class
@@ -325,12 +355,6 @@ namespace Insendlu
         {
             return _projectService.GetVariable(letter).id;
         }
-        //protected void logreport_OnSelectedIndexChanged(object sender, EventArgs e)
-        //{
-        //    var report = logreport.SelectedValue;
-        //    var test = report;
-        //    panel.Visible = true;
-        //}
 
         protected void btnSaveEstimation_OnClick(object sender, EventArgs e)
         {
@@ -363,6 +387,13 @@ namespace Insendlu
             _insedlu.SaveChangesAsync();
             MakeReadOnly();
 
+        }
+
+        protected void backToTrack_OnClick(object sender, EventArgs e)
+        {
+            var link = Session["TrackWorkLog"].ToString();
+
+            Response.Redirect(link);
         }
     }
 }

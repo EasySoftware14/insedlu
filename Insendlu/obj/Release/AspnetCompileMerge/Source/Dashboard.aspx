@@ -27,6 +27,8 @@
         function showTasksModal() {
             $("#tasksModalPopup").modal({ backdrop: "static", keyboard: false });
         }
+
+        
     </script>
     <div class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" id="myModal">
         <div class="modal-dialog">
@@ -48,7 +50,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" id="slideShow">
+    <%--<div class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" id="slideShow">
         <div class="modal-dialog" style="width: 850px">
             <div class="modal-content">
                 <div class="modal-header">
@@ -70,7 +72,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>--%>
     <div class="modal fade" tabindex="-1" runat="server" aria-labelledby="myModalLabel" aria-hidden="true" id="userSuccess">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -111,7 +113,7 @@
         </div>
     </div>
     <div class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" id="tasksModalPopup">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="width: 850px">
             <div class="modal-content">
                 <div class="modal-header">
                     <a class="close" id="cancelButton" data-dismiss="modal" aria-hidden="true">×</a>
@@ -123,6 +125,7 @@
                     <label>Tasks</label>
                     <br />
                     <asp:TextBox TextMode="MultiLine" Height="200" Enabled="False" CssClass="form-control" runat="server" ID="myTasksList"></asp:TextBox>
+                    <asp:Label runat="server" CssClass="label-danger" Text="No tasks yet" Visible="False" ID="taskError"></asp:Label>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-link" data-dismiss="modal">Close</button>
@@ -156,7 +159,7 @@
                             </td>
                             <td>
                                 <div>
-                                    <asp:ListBox runat="server" Height="300" Width="200px" CssClass="list-group-item" ID="userList" SelectionMode="Single" DataValueField="id" DataTextField="name" />
+                                    <%--<asp:ListBox runat="server" Height="300" Width="200px" CssClass="list-group-item" ID="userList" SelectionMode="Single" DataValueField="id" DataTextField="name" />--%>
                                 </div>
 
                             </td>
@@ -186,7 +189,7 @@
                     <table>
                         <tr>
                             <td>
-                                <asp:ListBox runat="server" Width="550px" Visible="False" CssClass="list-group-item" ID="lstAssignedTasks" DataValueField="id" DataTextField="body" />
+                                <asp:ListBox runat="server" Width="550px" Height="350px" visible="False" SelectionMode="Single" ID="lstAssignedTasks" />
                             </td>
                         </tr>
                     </table>
@@ -200,7 +203,7 @@
         </div>
     </div>
     <div class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" id="createdAssignedModal">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="width: 850px">
             <div class="modal-content">
                 <div class="modal-header">
                     <a class="close" id="cancelButton" data-dismiss="modal" aria-hidden="true">×</a>
@@ -212,7 +215,7 @@
                     <table>
                         <tr>
                             <td>
-                                <asp:ListBox runat="server" Width="550px" Visible="False" CssClass="list-group-item" ID="inProgress" DataValueField="id" DataTextField="body" />
+                                <asp:ListBox runat="server" Width="750px" Height="400px" Visible="False" ID="inProgress"/>
                             </td>
                         </tr>
                     </table>
@@ -227,10 +230,10 @@
     </div>
 
     <div class="modal fade" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true" id="statusUpdateModal">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="width: 850px">
             <div class="modal-content">
-                <div class="modal-header">
-                    <a class="close" id="cancelButton" data-dismiss="modal" aria-hidden="true">×</a>
+                <div class="modal-header">n
+                    <a class="close" id="cancelButton" data-dismiss="modal" aria-hidden="true">×</a>    
                     <br>
                     <h4 class="semi-bold"><i class="fa fa-bars" aria-hidden="true"></i> Update Task</h4>
                     <br>
@@ -241,10 +244,12 @@
                     <label>Status: </label>
                     <label id="currentStats" runat="server"></label>
                     <asp:DropDownList runat="server" ID="statusDropdown" CssClass="dropdown-caret" />
+                    <br/>
                 </div>
                 <div class="modal-footer">
+                    <asp:Label runat="server" ID="noTask" Visible="False" Text="No tasks to update yet" ForeColor="red"></asp:Label>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <asp:Button runat="server" ID="changeStatus" OnClick="changeStatus_OnClick" CssClass="btn btn-success" Text="Update Status" />
+                    <asp:Button runat="server" ID="changeStatusUpdate" CausesValidation="False" OnClick="changeStatusUpdate_OnClick" Text="Update" CssClass="btn btn-success"/>
                 </div>
             </div>
         </div>
@@ -263,7 +268,7 @@
                     <table>
                         <tr>
                             <td>
-                                <asp:ListBox runat="server" Width="550px" Visible="False" CssClass="list-group-item" ID="completedTasks" DataValueField="id" DataTextField="body" />
+                                <asp:ListBox runat="server" Width="550px" OnPreRender="completedTasks_OnPreRender" Visible="False" CssClass="list-group-item" ID="completedTasks" />
                             </td>
                         </tr>
                     </table>
@@ -277,23 +282,38 @@
         </div>
     </div>
     <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog" style="width: 850px">
             <div class="modal-content">
                 <div class="modal-header">
                     <a class="close" id="cancelButton" data-dismiss="modal" aria-hidden="true">×</a>
                     <br>
-                    <h4 class="semi-bold fa-tasks"> Add Task</h4>
+                    <h4 class="semi-bold far fa-tasks"> Add Task</h4>
 
                 </div>
                 <div class="modal-body">
-                    <label for="taskDesciption">Description</label>
-                    <asp:TextBox runat="server" TextMode="MultiLine" Height="100" ID="taskDesciption" CssClass="form-control"></asp:TextBox>
+                    <label for="taskDesciption"> Description</label>
+                    <asp:TextBox runat="server" TextMode="MultiLine" Height="100" ID="taskDesciption" Required="Required" CssClass="form-control"></asp:TextBox>
                     <br>
-                    <label for="attachment">Attachment</label>
+                    <label for="attachment"> Attachment</label>
                     <asp:FileUpload runat="server" CssClass="attachment" AllowMultiple="True" ID="attachments" />
                     <br />
-                    <label for="dueDate">Due Date</label>
-                    <asp:TextBox ID="dueDate" CssClass="form-control" ReadOnly="False" runat="server" />
+                    <table>
+                        <tr>
+                            
+                            <td>
+                                <label> Assign to:</label>
+                                <br/>
+                                <div>
+                                    <asp:DropDownList runat="server" Width="300px" height="50px" CssClass="list-group-item" ID="userList" DataValueField="id" DataTextField="name" />
+                                </div>
+
+                            </td>
+                        </tr>
+                    </table>
+                    <br/>
+                    <label for="dueDate"> Due Date</label>
+                    <br />
+                    <asp:TextBox ID="dueDate" CssClass="datepicker" ReadOnly="False" runat="server" required="required" />
                     <ajaxToolkit:CalendarExtender ID="dueDateExtender" Animated="True" Format="dd/MM/yyyy" runat="server" TargetControlID="dueDate" />
 
                 </div>
@@ -326,8 +346,8 @@
                     <br />
                     <div class="panel-footer clearfix">
                         <div class="pull-left">
-                            <button id="btnModalPopup" class="btn btn-primary">Add</button>
-                            <button id="assignModalPopup" class="btn btn-primary">Assign</button>
+                            <button id="btnModalPopup" class="btn btn-primary" style="width: 200px; margin-left: 15px"> Add</button>
+                            <%--<button id="assignModalPopup" class="btn btn-primary">Assign</button>--%>
                         </div>
                     </div>
                 </div>
@@ -359,8 +379,8 @@
                     <br />
                     <div class="panel-footer clearfix">
                         <div class="pull-left">
-                            <button id="createdAssigned" class="btn btn-primary">Started</button>
-                            <button id="statusUpdate" class="btn btn-primary">Update Status</button>
+                            <button id="createdAssigned" class="btn btn-primary" style="width: 200px; margin-left: 15px"> Started</button>
+                            <%--<button id="statusUpdate" class="btn btn-primary">Update Status</button>--%>
                         </div>
                     </div>
                 </div>
@@ -377,7 +397,7 @@
                     <br />
                     <div class="panel-footer clearfix">
                         <div class="pull-left">
-                            <button id="completedTasksBtn" class="btn btn-primary">Completed Tasks</button>
+                            <button id="completedTasksBtn" class="btn btn-primary" style="width: 200px; margin-left: 15px"> Completed Tasks</button>
                         </div>
                     </div>
                 </div>
@@ -865,7 +885,7 @@
             </div>
         </div>
     </div>
-    <div class="container" id="containerAddGuide" hidden="hidden">
+   <%-- <div class="container" id="containerAddGuide" hidden="hidden">
         <div class="row">
             <div class="col-lg-12">
                 <br />
@@ -880,7 +900,7 @@
                 <asp:Button runat="server" ID="Button1" CssClass="btn btn-success" Text="Upload Guide (s)" OnClick="UploadGuide_OnClick" />
             </div>
         </div>
-    </div>
+    </div>--%>
     <div class="container" id="mySpaceContainer" hidden="hidden">
         <div class="row">
             <div class="col-lg-12">

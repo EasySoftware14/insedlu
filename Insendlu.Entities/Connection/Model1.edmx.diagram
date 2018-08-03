@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="29f5ea0c052744da9bd941cc35c5837d" Name="Diagram1" ZoomLevel="39">
+      <Diagram DiagramId="29f5ea0c052744da9bd941cc35c5837d" Name="Diagram1" ZoomLevel="97">
         <EntityTypeShape EntityType="InsendluModel.Company" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="InsendluModel.CompanyService" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="InsendluModel.ExecutiveSummary" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
@@ -74,6 +74,13 @@
         <EntityTypeShape EntityType="InsendluModel.WhyChooseStandard" Width="1.5" PointX="15.375" PointY="21.75" />
         <EntityTypeShape EntityType="InsendluModel.ConclusionStandard" Width="1.5" PointX="21.375" PointY="16.75" />
         <EntityTypeShape EntityType="InsendluModel.TaskDocument" Width="1.5" PointX="9.375" PointY="22.75" />
+        <EntityTypeShape EntityType="InsendluModel.TaskCompletion" Width="1.5" PointX="22.375" PointY="19.75" />
+        <EntityTypeShape EntityType="InsendluModel.ContigencyFee" Width="1.5" PointX="22.375" PointY="22.75" />
+        <EntityTypeShape EntityType="InsendluModel.DataAnalyst" Width="1.5" PointX="3.375" PointY="23.75" />
+        <EntityTypeShape EntityType="InsendluModel.Logistic" Width="1.5" PointX="5.375" PointY="23.75" />
+        <EntityTypeShape EntityType="InsendluModel.ProjectManagementFee" Width="1.5" PointX="23.375" PointY="8.75" />
+        <EntityTypeShape EntityType="InsendluModel.SurveyMonkey" Width="1.5" PointX="23.375" PointY="11.75" />
+        <EntityTypeShape EntityType="InsendluModel.SustenenceFee" Width="1.5" PointX="11.375" PointY="23.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

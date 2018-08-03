@@ -7,7 +7,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ikvm.extensions;
 using Insendlu.Entities.Connection;
-using Insendlu.Entities.MySqlConnection;
+
 using Insendu.Services;
 
 namespace Insendlu
@@ -29,7 +29,7 @@ namespace Insendlu
                 var query = Request.QueryString;
                 var projId = Convert.ToInt64(query.Get("id"));
                 var id = Convert.ToInt64(Session["ID"]);
-
+                CalendarExtender1.SelectedDate = DateTime.Now;
                 var act = (from active in _insendluEntities.Activities
                            where active.worklog_id == projId
                            select new { Asset = active.asset }).ToList();

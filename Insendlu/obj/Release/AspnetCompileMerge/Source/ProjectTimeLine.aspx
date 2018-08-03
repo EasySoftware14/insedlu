@@ -30,13 +30,15 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-
-<%--    <ajaxToolkit:ModalPopupExtender ID="ModalPopupExtender1" PopupControlID="Panel1" TargetControlID="Panel1" runat="server"></ajaxToolkit:ModalPopupExtender>--%>
+   
     <div class="container-fluid">
         <div class="row">
-            <h1 class="">Project Time-Line</h1>
+            <label style="font-size: x-large">Project Time-Line</label>
             <hr />
             <div class="col-md-12">
+                <asp:Button runat="server" ID="backToTrack" Text="Back to TrackWork" CssClass="btn btn-primary" OnClick="backToTrack_OnClick"/>
+                <br/>
+                <br/>
                 <asp:Calendar ID="timeline" runat="server" BackColor="#FFFFCC" BorderColor="#FFCC66" BorderWidth="1px" OnSelectionChanged="timeline_OnSelectionChanged" DayNameFormat="Full" Font-Names="Verdana" Font-Size="8pt" ForeColor="#663399" Height="250px" OnDayRender="timeline_OnDayRender" ShowGridLines="True" ToolTip="Project Time-Line" TitleFormat="Month" Width="1089px">
                     <DayHeaderStyle BackColor="#FFCC66" Font-Bold="True" Height="1px" />
                     <NextPrevStyle Font-Size="9pt" ForeColor="lightblue" />

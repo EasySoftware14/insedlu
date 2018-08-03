@@ -132,6 +132,17 @@
     <Property Name="modified_at" Type="datetime" />
     <Property Name="proj_id" Type="int" />
   </EntityType>
+  <EntityType Name="ContigencyFees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="project_id" Type="int" />
+    <Property Name="worklog_id" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="total_cost" Type="int" />
+  </EntityType>
   <EntityType Name="CoverpageStandard">
     <Key>
       <PropertyRef Name="id" />
@@ -151,6 +162,18 @@
     <Property Name="position" Type="nvarchar" MaxLength="100" />
     <Property Name="responsibilities" Type="nvarchar(max)" />
     <Property Name="qualification" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="DataAnalyst">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="employee" Type="nvarchar" MaxLength="150" />
+    <Property Name="project_id" Type="int" />
+    <Property Name="total_cost" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="worklog_id" Type="int" />
   </EntityType>
   <EntityType Name="Department">
     <Key>
@@ -235,9 +258,24 @@
     <Property Name="duration" Type="int" />
     <Property Name="created_at" Type="datetime" />
     <Property Name="modified_at" Type="datetime" />
-    <Property Name="logger" Type="int" />
     <Property Name="project_id" Type="int" />
     <Property Name="duration_type_id" Type="int" />
+    <Property Name="members" Type="nvarchar" MaxLength="150" />
+    <Property Name="non_system_user" Type="nvarchar" MaxLength="250" />
+    <Property Name="duties" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Logistics">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="details" Type="nvarchar" MaxLength="250" />
+    <Property Name="unit_cost" Type="int" />
+    <Property Name="total_cost" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="worklog_id" Type="int" Nullable="false" />
+    <Property Name="project_id" Type="int" />
   </EntityType>
   <EntityType Name="Message">
     <Key>
@@ -411,6 +449,17 @@
     <Property Name="content" Type="nvarchar(max)" />
     <Property Name="created_at" Type="datetime" />
     <Property Name="modified_at" Type="datetime" />
+  </EntityType>
+  <EntityType Name="ProjectManagementFees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="project_id" Type="int" />
+    <Property Name="worklog_id" Type="int" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="total_cost" Type="int" />
   </EntityType>
   <EntityType Name="ProjectMethodology">
     <Key>
@@ -606,6 +655,30 @@
     <Property Name="modified_at" Type="datetime" />
     <Property Name="status" Type="int" />
   </EntityType>
+  <EntityType Name="SurveyMonkey">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="project_id" Type="int" />
+    <Property Name="worklog_id" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="total_cost" Type="int" />
+  </EntityType>
+  <EntityType Name="SustenenceFees">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="project_id" Type="int" />
+    <Property Name="worklog_id" Type="int" />
+    <Property Name="start_date" Type="date" />
+    <Property Name="end_date" Type="date" />
+    <Property Name="detail" Type="nvarchar" MaxLength="150" />
+    <Property Name="unit_cost" Type="int" />
+    <Property Name="total_cost" Type="int" />
+  </EntityType>
   <EntityType Name="Task">
     <Key>
       <PropertyRef Name="id" />
@@ -619,6 +692,15 @@
     <Property Name="task_document_id" Type="int" />
     <Property Name="assigned_to" Type="int" />
     <Property Name="due_date" Type="date" />
+    <Property Name="number_of_days_left" Type="int" />
+  </EntityType>
+  <EntityType Name="TaskCompletion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="task_id" Type="int" />
+    <Property Name="completion" Type="nvarchar" MaxLength="5" />
   </EntityType>
   <EntityType Name="TaskDocument">
     <Key>
@@ -667,7 +749,7 @@
     <Property Name="recovery_answer" Type="nvarchar(max)" />
     <Property Name="created_at" Type="datetime" Nullable="false" />
     <Property Name="modified_at" Type="datetime" Nullable="false" />
-    <Property Name="temporary_password" Type="nvarchar" MaxLength="50" />
+    <Property Name="temporary_password" Type="nvarchar" MaxLength="250" />
     <Property Name="status" Type="int" />
     <Property Name="contact_number" Type="nvarchar" MaxLength="20" />
     <Property Name="project_id" Type="bigint" />
@@ -790,8 +872,10 @@
     <EntitySet Name="ConclusionStandard" EntityType="Self.ConclusionStandard" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ConfidentialityStatement" EntityType="Self.ConfidentialityStatement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Consultancy" EntityType="Self.Consultancy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ContigencyFees" EntityType="Self.ContigencyFees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CoverpageStandard" EntityType="Self.CoverpageStandard" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CVS" EntityType="Self.CVS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DataAnalyst" EntityType="Self.DataAnalyst" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DevelopmentPlans" EntityType="Self.DevelopmentPlans" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DocumentType" EntityType="Self.DocumentType" Schema="dbo" store:Type="Tables" />
@@ -801,6 +885,7 @@
     <EntitySet Name="FieldWorkStatistics" EntityType="Self.FieldWorkStatistics" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FieldWorkType" EntityType="Self.FieldWorkType" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Logging" EntityType="Self.Logging" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Logistics" EntityType="Self.Logistics" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Message" EntityType="Self.Message" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MyStory" EntityType="Self.MyStory" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
@@ -814,6 +899,7 @@
     <EntitySet Name="ProjectEnvelop" EntityType="Self.ProjectEnvelop" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProjectImplementationTime" EntityType="Self.ProjectImplementationTime" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="projectJVCompany" EntityType="Self.projectJVCompany" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectManagementFees" EntityType="Self.ProjectManagementFees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProjectMethodology" EntityType="Self.ProjectMethodology" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProjectParameter" EntityType="Self.ProjectParameter" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProjectPolicy" EntityType="Self.ProjectPolicy" Schema="dbo" store:Type="Tables" />
@@ -832,7 +918,10 @@
     <EntitySet Name="RiskAnalysis" EntityType="Self.RiskAnalysis" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Sector" EntityType="Self.Sector" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SmallProject" EntityType="Self.SmallProject" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SurveyMonkey" EntityType="Self.SurveyMonkey" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SustenenceFees" EntityType="Self.SustenenceFees" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TaskCompletion" EntityType="Self.TaskCompletion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaskDocument" EntityType="Self.TaskDocument" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Telephone" EntityType="Self.Telephone" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Upload" EntityType="Self.Upload" Schema="dbo" store:Type="Tables" />

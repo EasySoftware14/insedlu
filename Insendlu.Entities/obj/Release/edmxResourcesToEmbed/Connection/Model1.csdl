@@ -147,7 +147,7 @@
     <Property Name="recovery_answer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="created_at" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="modified_at" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="temporary_password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="temporary_password" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
     <Property Name="status" Type="Int32" />
     <Property Name="contact_number" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="project_id" Type="Int64" />
@@ -235,6 +235,13 @@
     <EntitySet Name="WhyChooseStandards" EntityType="InsendluModel.WhyChooseStandard" />
     <EntitySet Name="ConclusionStandards" EntityType="InsendluModel.ConclusionStandard" />
     <EntitySet Name="TaskDocuments" EntityType="InsendluModel.TaskDocument" />
+    <EntitySet Name="TaskCompletions" EntityType="InsendluModel.TaskCompletion" />
+    <EntitySet Name="ContigencyFees" EntityType="InsendluModel.ContigencyFee" />
+    <EntitySet Name="DataAnalysts" EntityType="InsendluModel.DataAnalyst" />
+    <EntitySet Name="Logistics" EntityType="InsendluModel.Logistic" />
+    <EntitySet Name="ProjectManagementFees" EntityType="InsendluModel.ProjectManagementFee" />
+    <EntitySet Name="SurveyMonkeys" EntityType="InsendluModel.SurveyMonkey" />
+    <EntitySet Name="SustenenceFees" EntityType="InsendluModel.SustenenceFee" />
   </EntityContainer>
   <EntityType Name="ProjectMethodology">
     <Key>
@@ -349,6 +356,7 @@
     <Property Name="status" Type="Int32" />
     <Property Name="assigned_to" Type="Int32" />
     <Property Name="due_date" Type="DateTime" Precision="0" />
+    <Property Name="number_of_days_left" Type="Int32" />
   </EntityType>
   <EntityType Name="UserProfile">
     <Key>
@@ -645,9 +653,11 @@
     <Property Name="duration" Type="Int32" />
     <Property Name="created_at" Type="DateTime" Precision="3" />
     <Property Name="modified_at" Type="DateTime" Precision="3" />
-    <Property Name="logger" Type="Int32" />
     <Property Name="project_id" Type="Int32" />
     <Property Name="duration_type_id" Type="Int32" />
+    <Property Name="members" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="non_system_user" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="duties" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="SmallProject">
     <Key>
@@ -846,5 +856,84 @@
     <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="created_at" Type="DateTime" Precision="3" />
     <Property Name="file" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TaskCompletion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="task_id" Type="Int32" />
+    <Property Name="completion" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ContigencyFee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="project_id" Type="Int32" />
+    <Property Name="worklog_id" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
+    <Property Name="total_cost" Type="Int32" />
+  </EntityType>
+  <EntityType Name="DataAnalyst">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employee" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="project_id" Type="Int32" />
+    <Property Name="total_cost" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
+    <Property Name="worklog_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Logistic">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="details" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="unit_cost" Type="Int32" />
+    <Property Name="total_cost" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
+    <Property Name="worklog_id" Type="Int32" Nullable="false" />
+    <Property Name="project_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="ProjectManagementFee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="project_id" Type="Int32" />
+    <Property Name="worklog_id" Type="Int32" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="total_cost" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SurveyMonkey">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="project_id" Type="Int32" />
+    <Property Name="worklog_id" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
+    <Property Name="total_cost" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SustenenceFee">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="project_id" Type="Int32" />
+    <Property Name="worklog_id" Type="Int32" />
+    <Property Name="start_date" Type="DateTime" Precision="0" />
+    <Property Name="end_date" Type="DateTime" Precision="0" />
+    <Property Name="detail" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="unit_cost" Type="Int32" />
+    <Property Name="total_cost" Type="Int32" />
   </EntityType>
 </Schema>

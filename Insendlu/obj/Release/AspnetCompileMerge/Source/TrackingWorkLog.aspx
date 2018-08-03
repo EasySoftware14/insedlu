@@ -1,14 +1,69 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="TrackingWorkLog.aspx.cs" Inherits="Insendlu.TrackingWorkLog" %>
+<%@ Register TagPrefix="cc1" Namespace="AjaxControlToolkit" Assembly="AjaxControlToolkit, Version=18.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <style type="text/css">
+            body
+            {
+                font-family: Arial;
+                font-size: 10pt;
+            }
+            .modalBackground
+            {
+                background-color: Black;
+                filter: alpha(opacity=60);
+                opacity: 0.6;
+            }
+            .modalPopup
+            {
+                background-color: #FFFFFF;
+                width: 300px;
+                border: 3px solid #0DA9D0;
+                padding: 0;
+            }
+            .modalPopup .header
+            {
+                background-color: #2FBDF1;
+                height: 30px;
+                color: White;
+                line-height: 30px;
+                text-align: center;
+                font-weight: bold;
+            }
+            .modalPopup .body
+            {
+                min-height: 50px;
+                line-height: 30px;
+                text-align: center;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+    </style>
+    
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <h1> Tracking Work</h1>
                 <hr />
                 <div id="buttons" runat="server">
-                    
                 </div>
+                <asp:LinkButton ID="lnkDummy" runat="server"></asp:LinkButton>
+                <cc1:ModalPopupExtender ID="ModalPopupExtender1" BehaviorID="mpe" runat="server"
+                                        PopupControlID="pnlPopup" TargetControlID="lnkDummy" BackgroundCssClass="modalBackground" CancelControlID="btnHide">
+                </cc1:ModalPopupExtender>
+                <asp:Panel ID="pnlPopup" runat="server" CssClass="modalPopup panel-default" Style="display: none;width: 350px;">
+                    <div class="panel-heading">
+                        Confirmation
+                    </div>
+                    <div class="panel-body">
+                        Please select option below:
+                        <br />
+                        <br />
+                        <asp:Button runat="server" ID="btnUpdate" CssClass="btn btn-primary" Text="Update" OnClick="btnUpdate_OnClick"/> <asp:Button runat="server" ID="btnLogWork" Text="Track Work" CssClass="btn btn-default" OnClick="btnLogWork_OnClick"/> <asp:Button runat="server" ID="btnHide" cssclass="btn btn-warning" Text="Cancel"/>
+                    </div>
+                </asp:Panel>
+
             </div>
             <hr />  
         </div>

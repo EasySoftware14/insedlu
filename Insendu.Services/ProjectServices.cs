@@ -11,7 +11,6 @@ using Insendlu.Encryptor;
 using Insendlu.Entities;
 using Insendlu.Entities.Connection;
 ////using Insendlu.Entities.Domain;
-using Insendlu.Entities.MySqlConnection;
 //using Task = Insendlu.Entities.Domain.Task;
 
 
@@ -279,7 +278,7 @@ namespace Insendu.Services
 
             var projProjection = (from proj in _insendluEntities.ProjectProjections
                 where proj.proj_id == projId
-                select proj).SingleOrDefault();
+                select proj).FirstOrDefault();
 
             if (projProjection != null)
             {
@@ -291,7 +290,7 @@ namespace Insendu.Services
 
         public Company GetCompanyBackground()
         {
-            return _insendluEntities.Companies.Single();
+            return _insendluEntities.Companies.SingleOrDefault();
         }
 
         public CoverpageStandard GetCoverpageStandard()
@@ -685,6 +684,15 @@ namespace Insendu.Services
         public IList<ProjectEnvelop> GetProjectEnvelops()
         {
             return _insendluEntities.ProjectEnvelops.ToList();
+        }
+
+        public TaskCompletion GeTaskCompletion(long taskId)
+        {
+            var taskComp = (from taskCom in _insendluEntities.TaskCompletions
+                where taskCom.task_id == taskId
+                select taskCom).SingleOrDefault();
+
+            return taskComp;
         }
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using Insendlu.Entities;
 using Insendlu.Entities.Connection;
 ////using Insendlu.Entities.Domain;
-using Insendlu.Entities.MySqlConnection;
+
 using Insendu.Services;
 
 namespace Insendlu

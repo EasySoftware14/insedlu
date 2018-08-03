@@ -12,7 +12,7 @@
 		</CustomData>
 		<CustomData Category="Reference" Type="Assembly">
 			<Metadata Name="LogicalName" Value="Insedlu.Database.dll" />
-			<Metadata Name="FileName" Value="C:\USERS\AYANDA.SAWULISI.MAXXOR\DOCUMENTS\INSEDLUMASTECH\INSEDLU.DATABASE\OBJ\DEBUG\INSEDLU.DATABASE.DLL" />
+			<Metadata Name="FileName" Value="C:\WORKSPACE\WORKSPACE\INSEDLU\INSEDLU.DATABASE\OBJ\DEBUG\INSEDLU.DATABASE.DLL" />
 			<Metadata Name="AssemblyName" Value="Insedlu.Database" />
 			<Metadata Name="PermissionSet" Value="SAFE" />
 			<Metadata Name="Owner" Value="" />
@@ -20,7 +20,7 @@
 			<Metadata Name="IsVisible" Value="True" />
 			<Metadata Name="IsModelAware" Value="True" />
 			<Metadata Name="SkipCreationIfEmpty" Value="True" />
-			<Metadata Name="AssemblySymbolsName" Value="C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Database\obj\Debug\Insedlu.Database.pdb" />
+			<Metadata Name="AssemblySymbolsName" Value="C:\WorkSpace\Workspace\Insedlu\Insedlu.Database\obj\Debug\Insedlu.Database.pdb" />
 		</CustomData>
 		<CustomData Category="SqlCmdVariables" Type="SqlCmdVariable" />
 	</Header>

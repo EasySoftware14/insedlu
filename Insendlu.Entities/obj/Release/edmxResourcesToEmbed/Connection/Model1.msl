@@ -286,6 +286,7 @@
     <EntitySetMapping Name="Tasks">
       <EntityTypeMapping TypeName="InsendluModel.Task">
         <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="number_of_days_left" ColumnName="number_of_days_left" />
           <ScalarProperty Name="due_date" ColumnName="due_date" />
           <ScalarProperty Name="assigned_to" ColumnName="assigned_to" />
           <ScalarProperty Name="status" ColumnName="status" />
@@ -612,9 +613,11 @@
     <EntitySetMapping Name="Loggings">
       <EntityTypeMapping TypeName="InsendluModel.Logging">
         <MappingFragment StoreEntitySet="Logging">
+          <ScalarProperty Name="duties" ColumnName="duties" />
+          <ScalarProperty Name="non_system_user" ColumnName="non_system_user" />
+          <ScalarProperty Name="members" ColumnName="members" />
           <ScalarProperty Name="duration_type_id" ColumnName="duration_type_id" />
           <ScalarProperty Name="project_id" ColumnName="project_id" />
-          <ScalarProperty Name="logger" ColumnName="logger" />
           <ScalarProperty Name="modified_at" ColumnName="modified_at" />
           <ScalarProperty Name="created_at" ColumnName="created_at" />
           <ScalarProperty Name="duration" ColumnName="duration" />
@@ -839,6 +842,92 @@
           <ScalarProperty Name="file" ColumnName="file" />
           <ScalarProperty Name="created_at" ColumnName="created_at" />
           <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskCompletions">
+      <EntityTypeMapping TypeName="InsendluModel.TaskCompletion">
+        <MappingFragment StoreEntitySet="TaskCompletion">
+          <ScalarProperty Name="completion" ColumnName="completion" />
+          <ScalarProperty Name="task_id" ColumnName="task_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContigencyFees">
+      <EntityTypeMapping TypeName="InsendluModel.ContigencyFee">
+        <MappingFragment StoreEntitySet="ContigencyFees">
+          <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DataAnalysts">
+      <EntityTypeMapping TypeName="InsendluModel.DataAnalyst">
+        <MappingFragment StoreEntitySet="DataAnalyst">
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="employee" ColumnName="employee" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logistics">
+      <EntityTypeMapping TypeName="InsendluModel.Logistic">
+        <MappingFragment StoreEntitySet="Logistics">
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+          <ScalarProperty Name="unit_cost" ColumnName="unit_cost" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProjectManagementFees">
+      <EntityTypeMapping TypeName="InsendluModel.ProjectManagementFee">
+        <MappingFragment StoreEntitySet="ProjectManagementFees">
+          <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SurveyMonkeys">
+      <EntityTypeMapping TypeName="InsendluModel.SurveyMonkey">
+        <MappingFragment StoreEntitySet="SurveyMonkey">
+          <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SustenenceFees">
+      <EntityTypeMapping TypeName="InsendluModel.SustenenceFee">
+        <MappingFragment StoreEntitySet="SustenenceFees">
+          <ScalarProperty Name="total_cost" ColumnName="total_cost" />
+          <ScalarProperty Name="unit_cost" ColumnName="unit_cost" />
+          <ScalarProperty Name="detail" ColumnName="detail" />
+          <ScalarProperty Name="end_date" ColumnName="end_date" />
+          <ScalarProperty Name="start_date" ColumnName="start_date" />
+          <ScalarProperty Name="worklog_id" ColumnName="worklog_id" />
+          <ScalarProperty Name="project_id" ColumnName="project_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

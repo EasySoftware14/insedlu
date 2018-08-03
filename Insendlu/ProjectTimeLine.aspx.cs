@@ -38,18 +38,168 @@ namespace Insendlu
 
             var day = days;
             var date = new DateTime(year, month, day);
-            var selectedDate = date.ToShortDateString();
+            var selectedDate = e.Day.Date.ToShortDateString();
 
-            var accomodation = _assetService.GetAccommodation(e.Day.Date.ToShortDateString(), _projectId);
-            var telephone = _assetService.GetTelephone(e.Day.Date.ToShortDateString(), _projectId);
-            var wifi = _assetService.GetWifi(e.Day.Date.ToShortDateString(), _projectId);
-            var vehicle = _assetService.GetVehicle(e.Day.Date.ToShortDateString(), _projectId);
-            var printMaterial = _assetService.GetPrintMaterial(e.Day.Date.ToShortDateString(), _projectId);
-            var refereshment = _assetService.GetRefreshment(e.Day.Date.ToShortDateString(), _projectId);
-            var employees = _assetService.GetEmployees(e.Day.Date.ToShortDateString(), _projectId);
+            var accomodation = _assetService.GetAccommodation(selectedDate, _projectId);
+            var telephone = _assetService.GetTelephone(selectedDate, _projectId);
+            var wifi = _assetService.GetWifi(selectedDate, _projectId);
+            var vehicle = _assetService.GetVehicle(selectedDate, _projectId);
+            var printMaterial = _assetService.GetPrintMaterial(selectedDate, _projectId);
+            var refereshment = _assetService.GetRefreshment(selectedDate, _projectId);
+            var employees = _assetService.GetEmployees(selectedDate, _projectId);
+            var projManagementFees = _assetService.GetManagementFees(selectedDate, _projectId);
+            var contigencyFees = _assetService.GetContigencyFees(selectedDate, _projectId);
+            var sustenenceFees = _assetService.GetSustenenceFees(selectedDate, _projectId);
+            var dataAnalysts = _assetService.GetDataAnalysts(selectedDate, _projectId);
+            var logistics = _assetService.GetLogistics(selectedDate, _projectId);
+            var surveyMonkeys = _assetService.GetSurveyMonkeys(selectedDate, _projectId);
 
             var dater = e.Day.Date;
             var te = dater;
+
+            foreach (var survey in surveyMonkeys)
+            {
+                if (survey != null)
+                {
+                    if (survey.start_date != null)
+                    {
+                        var accomDay = survey.start_date;
+                        if (accomDay == e.Day.Date)
+                        {
+                            var breaker = new Literal();
+                            breaker.Text = "<br/>";
+
+                            var acc = new Label();
+                            acc.Text = "Survey Monkeys";
+                            acc.BackColor = Color.MediumSeaGreen;
+                            e.Cell.Controls.Add(breaker);
+                            e.Cell.Controls.Add(acc);
+                            e.Cell.HorizontalAlign = HorizontalAlign.Justify;
+
+                        }
+                    }
+                }
+            }
+
+            foreach (var logistic in logistics)
+            {
+                if (logistic != null)
+                {
+                    if (logistic.start_date != null)
+                    {
+                        var accomDay = logistic.start_date;
+                        if (accomDay == e.Day.Date)
+                        {
+                            var breaker = new Literal();
+                            breaker.Text = "<br/>";
+
+                            var acc = new Label();
+                            acc.Text = "Logistics";
+                            acc.BackColor = Color.LightGoldenrodYellow;
+                            e.Cell.Controls.Add(breaker);
+                            e.Cell.Controls.Add(acc);
+                            e.Cell.HorizontalAlign = HorizontalAlign.Justify;
+
+                        }
+                    }
+                }
+            }
+
+            foreach (var dataAnalyst in dataAnalysts)
+            {
+                if (dataAnalyst != null)
+                {
+                    if (dataAnalyst.start_date != null)
+                    {
+                        var accomDay = dataAnalyst.start_date;
+                        if (accomDay == e.Day.Date)
+                        {
+                            var breaker = new Literal();
+                            breaker.Text = "<br/>";
+
+                            var acc = new Label();
+                            acc.Text = "Data Analyst";
+                            acc.BackColor = Color.DarkOrange;
+                            e.Cell.Controls.Add(breaker);
+                            e.Cell.Controls.Add(acc);
+                            e.Cell.HorizontalAlign = HorizontalAlign.Justify;
+
+                        }
+                    }
+                }
+            }
+
+            foreach (var sustenenceFee in sustenenceFees)
+            {
+                if (sustenenceFee != null)
+                {
+                    if (sustenenceFee.start_date != null)
+                    {
+                        var accomDay = sustenenceFee.start_date;
+                        if (accomDay == e.Day.Date)
+                        {
+                            var breaker = new Literal();
+                            breaker.Text = "<br/>";
+
+                            var acc = new Label();
+                            acc.Text = "Sustenance Fees";
+                            acc.BackColor = Color.YellowGreen;
+                            e.Cell.Controls.Add(breaker);
+                            e.Cell.Controls.Add(acc);
+                            e.Cell.HorizontalAlign = HorizontalAlign.Justify;
+
+                        }
+                    }
+                }
+            }
+
+            foreach (var contigencyFee in contigencyFees)
+            {
+                if (contigencyFee != null)
+                {
+                    if (contigencyFee.start_date != null)
+                    {
+                        var accomDay = contigencyFee.start_date;
+                        if (accomDay == e.Day.Date)
+                        {
+                            var breaker = new Literal();
+                            breaker.Text = "<br/>";
+
+                            var acc = new Label();
+                            acc.Text = "Contingency Fees";
+                            acc.BackColor = Color.LightSlateGray;
+                            e.Cell.Controls.Add(breaker);
+                            e.Cell.Controls.Add(acc);
+                            e.Cell.HorizontalAlign = HorizontalAlign.Justify;
+
+                        }
+                    }
+                }
+            }
+
+            foreach (var managementFee in projManagementFees)
+            {
+                if (managementFee != null)
+                {
+                    if (managementFee.start_date != null)
+                    {
+                        var accomDay = managementFee.start_date;
+                        if (accomDay == e.Day.Date)
+                        {
+                            var breaker = new Literal();
+                            breaker.Text = "<br/>";
+
+                            var acc = new Label();
+                            acc.Text = "Management Fees";
+                            acc.BackColor = Color.Green;
+                            e.Cell.Controls.Add(breaker);
+                            e.Cell.Controls.Add(acc);
+                            e.Cell.HorizontalAlign = HorizontalAlign.Justify;
+
+                        }
+                    }
+                }
+            }
 
             foreach (var accom in accomodation)
             {
@@ -292,5 +442,11 @@ namespace Insendlu
             //Panel1.Visible = false;
         }
 
+        protected void backToTrack_OnClick(object sender, EventArgs e)
+        {
+            var link = Session["TrackWorkLog"].ToString();
+
+            Response.Redirect(link);
+        }
     }
 }

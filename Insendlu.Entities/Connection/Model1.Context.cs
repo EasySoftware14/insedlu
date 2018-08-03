@@ -96,6 +96,13 @@ namespace Insendlu.Entities.Connection
         public virtual DbSet<WhyChooseStandard> WhyChooseStandards { get; set; }
         public virtual DbSet<ConclusionStandard> ConclusionStandards { get; set; }
         public virtual DbSet<TaskDocument> TaskDocuments { get; set; }
+        public virtual DbSet<TaskCompletion> TaskCompletions { get; set; }
+        public virtual DbSet<ContigencyFee> ContigencyFees { get; set; }
+        public virtual DbSet<DataAnalyst> DataAnalysts { get; set; }
+        public virtual DbSet<Logistic> Logistics { get; set; }
+        public virtual DbSet<ProjectManagementFee> ProjectManagementFees { get; set; }
+        public virtual DbSet<SurveyMonkey> SurveyMonkeys { get; set; }
+        public virtual DbSet<SustenenceFee> SustenenceFees { get; set; }
     
         public virtual ObjectResult<Nullable<int>> GetAssetTotal(Nullable<int> projId, string asset)
         {

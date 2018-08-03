@@ -5,19 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using Insendlu.Entities.Connection;
-using Insendlu.Entities.MySqlConnection;
 using Insendu.Services;
 
 namespace Insendlu
 {
     public partial class BizPlans : System.Web.UI.Page
     {
-        private readonly insedluEntities _insendluEntities;
+        private readonly InsendluEntities _insendluEntities;
         private readonly ProjectService _projectService;
 
         public BizPlans()
         {
-            _insendluEntities = new insedluEntities();
+            _insendluEntities = new InsendluEntities();
             _projectService = new ProjectService();
         }
         protected void Page_Load(object sender, EventArgs e)
