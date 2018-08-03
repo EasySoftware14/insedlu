@@ -1,0 +1,77 @@
+15 Sep 2017 7:26:50 PM	This log contains information about the import schema operation into project 'Insedlu.Database' on computer 'AYANDA-LAPTOP' by user 'ayanda.sawulisi'.
+15 Sep 2017 7:26:50 PM	Import of database schema has started.
+15 Sep 2017 7:27:00 PM	Gathering database options
+15 Sep 2017 7:27:00 PM	Gathering users
+15 Sep 2017 7:27:00 PM	Gathering roles
+15 Sep 2017 7:27:00 PM	Gathering application roles
+15 Sep 2017 7:27:00 PM	Gathering role memberships
+15 Sep 2017 7:27:00 PM	Gathering filegroups
+15 Sep 2017 7:27:00 PM	Gathering full-text catalogs
+15 Sep 2017 7:27:00 PM	Gathering assemblies
+15 Sep 2017 7:27:00 PM	Gathering certificates
+15 Sep 2017 7:27:00 PM	Gathering asymmetric keys
+15 Sep 2017 7:27:00 PM	Gathering symmetric keys
+15 Sep 2017 7:27:00 PM	Gathering encrypted symmetric keys
+15 Sep 2017 7:27:00 PM	Gathering schemas
+15 Sep 2017 7:27:00 PM	Gathering XML schema collections
+15 Sep 2017 7:27:00 PM	Gathering user-defined data types
+15 Sep 2017 7:27:00 PM	Gathering user-defined types
+15 Sep 2017 7:27:00 PM	Gathering table types
+15 Sep 2017 7:27:00 PM	Gathering unique keys for table types
+15 Sep 2017 7:27:00 PM	Gathering primary keys for table types
+15 Sep 2017 7:27:00 PM	Gathering indexes for table types
+15 Sep 2017 7:27:00 PM	Gathering check constraints for table types
+15 Sep 2017 7:27:00 PM	Gathering default constraints for table types
+15 Sep 2017 7:27:00 PM	Gathering partition functions
+15 Sep 2017 7:27:00 PM	Gathering partition schemes
+15 Sep 2017 7:27:00 PM	Gathering functions
+15 Sep 2017 7:27:00 PM	Gathering encrypted functions
+15 Sep 2017 7:27:00 PM	Gathering aggregates
+15 Sep 2017 7:27:00 PM	Gathering procedures
+15 Sep 2017 7:27:00 PM	Gathering encrypted procedures
+15 Sep 2017 7:27:00 PM	Gathering tables
+15 Sep 2017 7:27:00 PM	Gathering primary keys
+15 Sep 2017 7:27:00 PM	Gathering unique constraints
+15 Sep 2017 7:27:00 PM	Gathering foreign keys
+15 Sep 2017 7:27:00 PM	Gathering default constraints
+15 Sep 2017 7:27:00 PM	Gathering check constraints
+15 Sep 2017 7:27:00 PM	Gathering views
+15 Sep 2017 7:27:00 PM	Gathering encrypted views
+15 Sep 2017 7:27:00 PM	Gathering indexes
+15 Sep 2017 7:27:00 PM	Gathering statistics
+15 Sep 2017 7:27:00 PM	Gathering full-text index stoplists
+15 Sep 2017 7:27:00 PM	Gathering search property lists
+15 Sep 2017 7:27:00 PM	Gathering search properties
+15 Sep 2017 7:27:00 PM	Gathering full-text indexes
+15 Sep 2017 7:27:00 PM	Gathering column store indexes
+15 Sep 2017 7:27:00 PM	Gathering spatial indexes
+15 Sep 2017 7:27:00 PM	Gathering XML indexes
+15 Sep 2017 7:27:00 PM	Gathering Selective XML indexes
+15 Sep 2017 7:27:00 PM	Gathering encrypted triggers
+15 Sep 2017 7:27:00 PM	Gathering triggers
+15 Sep 2017 7:27:00 PM	Gathering encrypted and clr ddl triggers
+15 Sep 2017 7:27:00 PM	Gathering ddl triggers
+15 Sep 2017 7:27:00 PM	Gathering synonyms
+15 Sep 2017 7:27:00 PM	Gathering defaults
+15 Sep 2017 7:27:00 PM	Gathering data constraint uddt bindings
+15 Sep 2017 7:27:00 PM	Gathering rules
+15 Sep 2017 7:27:00 PM	Gathering data constraint uddt bindings
+15 Sep 2017 7:27:00 PM	Gathering message types
+15 Sep 2017 7:27:00 PM	Gathering queues
+15 Sep 2017 7:27:00 PM	Gathering contracts
+15 Sep 2017 7:27:00 PM	Gathering services
+15 Sep 2017 7:27:00 PM	Gathering event notifications
+15 Sep 2017 7:27:00 PM	Gathering remote service bindings
+15 Sep 2017 7:27:00 PM	Gathering broker priorities
+15 Sep 2017 7:27:00 PM	Gathering signatures
+15 Sep 2017 7:27:00 PM	Gathering data compression options
+15 Sep 2017 7:27:00 PM	Gathering sequence types
+15 Sep 2017 7:27:00 PM	Gathering extended properties
+15 Sep 2017 7:27:01 PM	Gathering credentials
+15 Sep 2017 7:27:01 PM	Gathering logins
+15 Sep 2017 7:27:01 PM	Gathering server audits
+15 Sep 2017 7:27:01 PM	Scanning project for duplicate elements
+15 Sep 2017 7:27:01 PM	Finished duplicate element processing
+15 Sep 2017 7:27:03 PM	Finished importing database.
+15 Sep 2017 7:27:03 PM	A summary of the import was saved to the following location: C:\Users\ayanda.sawulisi.MAXXOR\Documents\InsedluMasTech\Insedlu.Database\Import Schema Logs\Insedlu.Database_20170915052650.log
+15 Sep 2017 7:27:03 PM	Click Finish to continue...
